@@ -208,7 +208,7 @@ void interp() {
 	   if (reg.cc) break;
 	   /* through to next case */
          case JMP:
-           reg.P = x.lev;
+           reg.P = x.val;
            break;
          case INCT:
            reg.T += x.val;

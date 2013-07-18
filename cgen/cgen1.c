@@ -26,6 +26,8 @@ static int cgen_con(AST);
 static int cgen_imm(AST);
 static int cgen_op2(AST);
 
+static int get_op_code_val(int);
+
 static int sizeof_locals(AST);
 static int sizeof_local(AST);
 
@@ -198,14 +200,19 @@ static int cgen_asn(AST a) {
 static int cgen_ifstmt(AST a) {
     int c= 0;
     AST a1,a2,a3;
+    //labels:
+    int l1 = new_label();
+    int l2 = new_label();
+
     get_sons(a, &a1,&a2,&a3,0);
 
     c = cgen_expr(a1);
-    c = gen_code(OPR, 0, 101); /* dummy */
+    c = gen_code(JMPF, l1, 0);
     c = cgen_stmt(a2);
-    c = gen_code(OPR, 0, 102); /* dummy */
+    c = gen_code(JMP, l2, 0);    
+    c = gen_label(l1);
     c = cgen_stmt(a3);
-    c = gen_code(OPR, 0, 103); /* dummy */
+    c = gen_label(l2);
     return c;
 }
 
@@ -279,8 +286,29 @@ static int cgen_op2(AST a) {
     c = cgen_expr(a2);
 
     //calculate the type of operator.
+    c = gen_code(OPR, 0, get_op_code_val(get_ival(a))); /* dummy */
+    return c;
+}
+
+static int cgen_con(AST a) {
+    int c=0;
+    int idx = get_ival(a);
+
+    c = gen_code(LDC, 0, idx);
+    return c;
+}
+
+static int cgen_imm(AST a) {
+    int c=0;
+    int v = get_ival(a);
+
+    c = gen_code(LDI, 0, v); /* imm */
+    return c;
+}
+
+static int get_op_code_val(int tokenval){
     int optype = 0;
-    switch(op){
+    switch(tokenval){
 	case '+':
 	    optype = 2;
 	    break;
@@ -315,22 +343,5 @@ static int cgen_op2(AST a) {
 	    optype = 13;
 	    break;
     }
-    c = gen_code(OPR, 0, optype); /* dummy */
-    return c;
+    return optype;
 }
-
-static int cgen_con(AST a) {
-    int c=0;
-    int idx = get_ival(a);
-
-    c = gen_code(LDC, 0, idx);
-    return c;
-}
-
-static int cgen_imm(AST a) {
-    int c=0;
-    int v = get_ival(a);
-
-    c = gen_code(LDI, 0, v); /* imm */
-    return c;
-} 

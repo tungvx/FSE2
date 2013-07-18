@@ -218,6 +218,7 @@ get_cur_depth	front/sym.c	/^inline int get_cur_depth () { return cur_depth; }$/;
 get_ival	front/ast.c	/^int get_ival(AST a) {$/;"	f
 get_loc_entry	front/loc.c	/^void get_loc_entry(int e, int *dep, int *off, int *size) {$/;"	f
 get_node	front/ast.c	/^void get_node(AST a, int *type, char *text, int *ival) {$/;"	f
+get_op_code_val	cgen/cgen1.c	/^static int get_op_code_val(int tokenval){$/;"	f	file:
 get_sizeoftype	front/type.c	/^int get_sizeoftype(AST ty) {$/;"	f
 get_son0	front/ast.c	/^AST get_son0(AST a) {$/;"	f
 get_sons	front/ast.c	/^void get_sons(AST a, AST *s0, AST *s1, AST *s2, AST *s3) {$/;"	f
