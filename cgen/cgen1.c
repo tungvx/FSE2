@@ -228,7 +228,7 @@ static int cgen_vref(AST a, int lhs) {
     int c= 0;
     int idx = get_ival(a);
 
-    c = gen_code((lhs)?STV:LDV, get_cur_depth() - getdepth_SYM(idx), idx);  /* dummy */
+    c = gen_code((lhs)?STV:LDV, get_cur_depth() - getdepth_SYM(idx), getoffset_SYM(idx));  /* dummy */
     return c;
 }
 

@@ -1,1 +1,6 @@
 *.o
+*.swp
+parser1
+parser2
+cgen1
+cgen2
