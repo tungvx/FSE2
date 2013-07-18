@@ -142,6 +142,7 @@ cgen_funcdecl	cgen/cgen2.c	/^static int cgen_funcdecl(AST a) {$/;"	f	file:
 cgen_funcdecls	cgen/cgen2.c	/^static int cgen_funcdecls(AST a) {$/;"	f	file:
 cgen_ifstmt	cgen/cgen1.c	/^static int cgen_ifstmt(AST a) {$/;"	f	file:
 cgen_imm	cgen/cgen1.c	/^static int cgen_imm(AST a) {$/;"	f	file:
+cgen_lval	cgen/cgen1.c	/^static int cgen_lval(AST a,int lhs){$/;"	f	file:
 cgen_op2	cgen/cgen1.c	/^static int cgen_op2(AST a) {$/;"	f	file:
 cgen_stmt	cgen/cgen1.c	/^static int cgen_stmt(AST a) {$/;"	f	file:
 cgen_stmt	cgen/cgen2.c	/^static int cgen_stmt(AST a) {$/;"	f	file:

@@ -69,9 +69,9 @@ static int cgen_blocks(AST a) {
     AST a1, a2;
     int c=0;
     while (!isleaf(a)) {
-         get_sons(a, &a1, &a2, 0, 0);
-         c = cgen_block(a1);
-         a = a2;
+	get_sons(a, &a1, &a2, 0, 0);
+	c = cgen_block(a1);
+	a = a2;
     }
     return c;
 }
@@ -109,13 +109,13 @@ static int sizeof_locals(AST a) {
     int sz = 0;
     AST a1,a2;
     while (!isleaf(a)) {
-         get_sons(a, &a1, &a2, 0, 0);
-         switch (nodetype(a1)) {
-            case nVARDECL : sz += sizeof_local(a1); break;
-            case nVARDECLS: sz += sizeof_locals(a1); break;
-            default: sz += 1; break;
-         }
-         a = a2;
+	get_sons(a, &a1, &a2, 0, 0);
+	switch (nodetype(a1)) {
+	    case nVARDECL : sz += sizeof_local(a1); break;
+	    case nVARDECLS: sz += sizeof_locals(a1); break;
+	    default: sz += 1; break;
+	}
+	a = a2;
     }
     return sz;
 }
@@ -124,9 +124,9 @@ static int cgen_stmts(AST a) {
     AST a1, a2;
     int c=0;
     while (!isleaf(a)) {
-         get_sons(a, &a1, &a2, 0, 0);
-         c = cgen_stmt(a1);
-         a = a2;
+	get_sons(a, &a1, &a2, 0, 0);
+	c = cgen_stmt(a1);
+	a = a2;
     }
     return c;
 }
@@ -135,11 +135,11 @@ static int show_cblock_stmt(int cb,int ce) {
     int b=0;
 
     if (cb < ce) {
-        printf(" cblock=(%d,%d)\n",cb+1,ce);
-        b = new_cblock();
-        set_cblock(b,cb+1,ce);
+	printf(" cblock=(%d,%d)\n",cb+1,ce);
+	b = new_cblock();
+	set_cblock(b,cb+1,ce);
     } else {
-        printf(" cblock=null\n");
+	printf(" cblock=null\n");
     }
     return b;
 }
@@ -153,25 +153,25 @@ static int cgen_stmt(AST a) {
     get_sons(a, &a1, 0,0,0);
 
     switch (nodetype(a1)) {
-        case nASN:
+	case nASN:
 	    c = cgen_asn(a1);
-            break;
-        case nIF:
+	    break;
+	case nIF:
 	    c = cgen_ifstmt(a1);
-            break;
-        case nBLOCK:
-            c = cgen_block(a1);
-            break;
-        default:
-            break;
+	    break;
+	case nBLOCK:
+	    c = cgen_block(a1);
+	    break;
+	default:
+	    break;
     }
 
     ce = get_cur_code();
 
     if (cb < ce) {
-     // printf("\n");
-     // print_AST(a);
-     // show_cblock_stmt(cb,ce);
+	// printf("\n");
+	// print_AST(a);
+	// show_cblock_stmt(cb,ce);
     }
 
     return c;
@@ -183,7 +183,15 @@ static int cgen_asn(AST a) {
     get_sons(a, &a1, &a2,0,0);
 
     c = cgen_expr(a2);
-    c = cgen_vref(a1,true);
+
+    switch(nodetype(a1)){
+	case nVREF:
+	    c = cgen_vref(a1,true);
+	    break;
+	case nLVAL:
+	    c = cgen_lval(a1, true);
+	    break;
+    }
     return c;
 }
 
@@ -206,29 +214,56 @@ static int cgen_expr(AST a) {
     int val = get_ival(a);
 
     switch (nodetype(a)) {
-        case nVREF:
-           c = cgen_vref(a,false);
-           break;
-        case nIMM:
-           c = gen_code(LDI, 0, val); 
-           break;
-        case nCON:
-           c = gen_code(LDC, 0, val); 
-           break;
-        case nOP2:
-           c = cgen_op2(a);
-           break;
-        default:
-           break;
+	case nVREF:
+	    c = cgen_vref(a,false);
+	    break;
+	case nIMM:
+	    c = gen_code(LDI, 0, val); 
+	    break;
+	case nCON:
+	    c = gen_code(LDC, 0, val); 
+	    break;
+	case nOP2:
+	    c = cgen_op2(a);
+	    break;
+	case nLVAL:
+	    c = cgen_lval(a, false);
+	    break;
+	default:
+	    break;
     }
     return c;
 }
+
+//generate lval code.
+static int cgen_lval(AST a,int lhs){
+    int c = 0;
+    AST aref, exprs, expr;
+
+    get_sons(a, &aref, &exprs, 0, 0);
+    get_sons(exprs, &expr, &exprs, 0, 0);
+
+    c = cgen_expr(expr);
+
+    int idx = get_ival(aref);
+
+    int lev = get_cur_depth() - getdepth_SYM(idx);
+    int val = getoffset_SYM(idx);
+
+    gen_code(LDA, lev, val);
+
+    c = gen_code(OPR, 0, 2);
+
+    c = gen_code((lhs)?STX:LDV, lev, val);
+    return c;
+} 
 
 static int cgen_vref(AST a, int lhs) {
     int c= 0;
     int idx = get_ival(a);
 
     c = gen_code((lhs)?STV:LDV, get_cur_depth() - getdepth_SYM(idx), getoffset_SYM(idx));  /* dummy */
+
     return c;
 }
 
@@ -242,41 +277,41 @@ static int cgen_op2(AST a) {
 
     c = cgen_expr(a1);
     c = cgen_expr(a2);
-    
+
     //calculate the type of operator.
     int optype = 0;
     switch(op){
 	case '+':
 	    optype = 2;
 	    break;
-      case '-':
+	case '-':
 	    optype = 3;
 	    break;
-      case '*':
+	case '*':
 	    optype = 4;
 	    break;
-      case '/':
+	case '/':
 	    optype = 5;
 	    break;
-      case '%':
+	case '%':
 	    optype = 6;
 	    break;
-      case EQEQ: 
+	case EQEQ: 
 	    optype = 8;
 	    break;
-      case NOTEQ: 
+	case NOTEQ: 
 	    optype = 9;
 	    break;
-      case GTEQ: 
+	case GTEQ: 
 	    optype = 10;
 	    break;
-      case LTEQ: 
+	case LTEQ: 
 	    optype = 11;
 	    break;
-      case GT: 
+	case GT: 
 	    optype = 12;
 	    break;
-      case LT: 
+	case LT: 
 	    optype = 13;
 	    break;
     }
