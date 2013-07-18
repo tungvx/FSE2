@@ -202,7 +202,7 @@ static int cgen_ifstmt(AST a) {
 }
 
 static int cgen_expr(AST a) {
-    int c= 0; 
+    int c= 0;
     int val = get_ival(a);
 
     switch (nodetype(a)) {
@@ -242,7 +242,45 @@ static int cgen_op2(AST a) {
 
     c = cgen_expr(a1);
     c = cgen_expr(a2);
-    c = gen_code(OPR, 0, 99); /* dummy */
+    
+    //calculate the type of operator.
+    int optype = 0;
+    switch(op){
+	case '+':
+	    optype = 2;
+	    break;
+      case '-':
+	    optype = 3;
+	    break;
+      case '*':
+	    optype = 4;
+	    break;
+      case '/':
+	    optype = 5;
+	    break;
+      case '%':
+	    optype = 6;
+	    break;
+      case EQEQ: 
+	    optype = 8;
+	    break;
+      case NOTEQ: 
+	    optype = 9;
+	    break;
+      case GTEQ: 
+	    optype = 10;
+	    break;
+      case LTEQ: 
+	    optype = 11;
+	    break;
+      case GT: 
+	    optype = 12;
+	    break;
+      case LT: 
+	    optype = 13;
+	    break;
+    }
+    c = gen_code(OPR, 0, optype); /* dummy */
     return c;
 }
 
