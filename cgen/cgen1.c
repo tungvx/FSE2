@@ -202,7 +202,7 @@ static int cgen_ifstmt(AST a) {
 }
 
 static int cgen_expr(AST a) {
-    int c= 0;
+    int c= 0; 
     int val = get_ival(a);
 
     switch (nodetype(a)) {
