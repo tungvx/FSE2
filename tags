@@ -1,0 +1,517 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ANDAND	front/token.h	36;"	d
+ARIOP	front/token.h	/^ARIOP, RELOP, LOGOP, ASNOP, CMT, $/;"	e	enum:tokentype
+ASNOP	front/token.h	/^ARIOP, RELOP, LOGOP, ASNOP, CMT, $/;"	e	enum:tokentype
+AST	front/ast.h	/^typedef int AST;$/;"	t
+B	cgen/code.h	/^  unsigned int B,T;$/;"	m	struct:regs
+CALL	cgen/code.h	/^  JMP, JMPF,  CALL,  RET,$/;"	e	enum:opcodetype
+CC	cgen/makefile	/^CC = gcc -g -I$(L)$/;"	m
+CC	front/makefile	/^CC = gcc -g$/;"	m
+CLIT	front/token.h	/^enum tokentype {ID=256, ILIT, CLIT, FLIT, SLIT,$/;"	e	enum:tokentype
+CMT	front/token.h	/^ARIOP, RELOP, LOGOP, ASNOP, CMT, $/;"	e	enum:tokentype
+D	cgen/code.h	/^  unsigned int S,D;$/;"	m	struct:regs
+DECT	cgen/code.h	/^  INCT, DECT, ENTER, LEAVE,$/;"	e	enum:opcodetype
+DQ	front/token.c	119;"	d	file:
+DQ	front/token.c	136;"	d	file:
+ENTER	cgen/code.h	/^  INCT, DECT, ENTER, LEAVE,$/;"	e	enum:opcodetype
+EQ	front/token.h	20;"	d
+EQEQ	front/token.h	31;"	d
+ERROR	front/token.h	/^tEND, ERROR=-1 };$/;"	e	enum:tokentype
+FLIT	front/token.h	/^enum tokentype {ID=256, ILIT, CLIT, FLIT, SLIT,$/;"	e	enum:tokentype
+GT	front/token.h	27;"	d
+GTEQ	front/token.h	29;"	d
+ID	front/token.h	/^enum tokentype {ID=256, ILIT, CLIT, FLIT, SLIT,$/;"	e	enum:tokentype
+ILIT	front/token.h	/^enum tokentype {ID=256, ILIT, CLIT, FLIT, SLIT,$/;"	e	enum:tokentype
+INCT	cgen/code.h	/^  INCT, DECT, ENTER, LEAVE,$/;"	e	enum:opcodetype
+JMP	cgen/code.h	/^  JMP, JMPF,  CALL,  RET,$/;"	e	enum:opcodetype
+JMPF	cgen/code.h	/^  JMP, JMPF,  CALL,  RET,$/;"	e	enum:opcodetype
+L	cgen/makefile	/^L = ..\/front\/$/;"	m
+LDA	cgen/code.h	/^  OPR, LDV, LDI, LDC, LDA, LDX, LDS, $/;"	e	enum:opcodetype
+LDC	cgen/code.h	/^  OPR, LDV, LDI, LDC, LDA, LDX, LDS, $/;"	e	enum:opcodetype
+LDI	cgen/code.h	/^  OPR, LDV, LDI, LDC, LDA, LDX, LDS, $/;"	e	enum:opcodetype
+LDS	cgen/code.h	/^  OPR, LDV, LDI, LDC, LDA, LDX, LDS, $/;"	e	enum:opcodetype
+LDV	cgen/code.h	/^  OPR, LDV, LDI, LDC, LDA, LDX, LDS, $/;"	e	enum:opcodetype
+LDX	cgen/code.h	/^  OPR, LDV, LDI, LDC, LDA, LDX, LDS, $/;"	e	enum:opcodetype
+LEAVE	cgen/code.h	/^  INCT, DECT, ENTER, LEAVE,$/;"	e	enum:opcodetype
+LIBS	cgen/makefile	/^LIBS = $(L)scanner.o $(L)token.o $(L)ast.o $(L)sym.o $(L)type.o $(L)loc.o$/;"	m
+LOGOP	front/token.h	/^ARIOP, RELOP, LOGOP, ASNOP, CMT, $/;"	e	enum:tokentype
+LSHIFT	front/token.h	38;"	d
+LT	front/token.h	28;"	d
+LTEQ	front/token.h	30;"	d
+Line	front/token.h	/^typedef struct Line {$/;"	s
+Line	front/token.h	/^} Line;$/;"	t	typeref:struct:Line
+MAX_AST_NODE	front/ast.h	4;"	d
+MAX_CODE	cgen/code.c	9;"	d	file:
+MAX_CODEBLOCK	cgen/code.c	10;"	d	file:
+MAX_INSN_CNT	cgen/code.c	169;"	d	file:
+MAX_LEXEME	front/token.h	4;"	d
+MAX_LINE	front/token.h	5;"	d
+MAX_LOC	front/loc.h	4;"	d
+MAX_MEM	cgen/code.c	11;"	d	file:
+MAX_SCOPEENTRY	front/sym.h	5;"	d
+MAX_STR_BUF	front/token.h	6;"	d
+MAX_SYMENTRY	front/sym.h	4;"	d
+MINUSEQ	front/token.h	22;"	d
+MINUSMINUS	front/token.h	35;"	d
+NOTEQ	front/token.h	32;"	d
+Node	front/ast.h	/^typedef struct Node {$/;"	s
+Node	front/ast.h	/^} Node ;$/;"	t	typeref:struct:Node
+OBJS	front/makefile	/^OBJS = token.o ast.o sym.o type.o loc.o scanner.o$/;"	m
+OPR	cgen/code.h	/^  OPR, LDV, LDI, LDC, LDA, LDX, LDS, $/;"	e	enum:opcodetype
+OROR	front/token.h	37;"	d
+P	cgen/code.h	/^  unsigned int P,R,V;$/;"	m	struct:regs
+PERCENTEQ	front/token.h	25;"	d
+PLUSEQ	front/token.h	21;"	d
+PLUSPLUS	front/token.h	34;"	d
+R	cgen/code.h	/^  unsigned int P,R,V;$/;"	m	struct:regs
+RELOP	front/token.h	/^ARIOP, RELOP, LOGOP, ASNOP, CMT, $/;"	e	enum:tokentype
+RET	cgen/code.h	/^  JMP, JMPF,  CALL,  RET,$/;"	e	enum:opcodetype
+RSHIFT	front/token.h	39;"	d
+S	cgen/code.h	/^  unsigned int S,D;$/;"	m	struct:regs
+SLASHEQ	front/token.h	24;"	d
+SLIT	front/token.h	/^enum tokentype {ID=256, ILIT, CLIT, FLIT, SLIT,$/;"	e	enum:tokentype
+SQ	front/token.c	118;"	d	file:
+SQ	front/token.c	135;"	d	file:
+STAREQ	front/token.h	23;"	d
+STS	cgen/code.h	/^  STV, STX, STS,$/;"	e	enum:opcodetype
+STV	cgen/code.h	/^  STV, STX, STS,$/;"	e	enum:opcodetype
+STX	cgen/code.h	/^  STV, STX, STS,$/;"	e	enum:opcodetype
+T	cgen/code.h	/^  unsigned int B,T;$/;"	m	struct:regs
+Token	front/token.h	/^typedef struct Token {$/;"	s
+Token	front/token.h	/^} Token ;$/;"	t	typeref:struct:Token
+V	cgen/code.h	/^  unsigned int P,R,V;$/;"	m	struct:regs
+WITHDUP	front/token.h	18;"	d
+WITHEQ	front/token.h	17;"	d
+_AST_H_	front/ast.h	2;"	d
+_CODE_H_	cgen/code.h	2;"	d
+_LOC_H_	front/loc.h	2;"	d
+_SYM_H_	front/sym.h	2;"	d
+_TOKEN_H_	front/token.h	2;"	d
+_TYPE_H_	front/type.h	2;"	d
+abbr	front/ast.c	/^static void abbr(Node *np) {$/;"	f	file:
+append_list	front/ast.c	/^AST append_list(AST l, AST a1) {$/;"	f
+arg_mark	front/sym.c	/^static int arg_mark = 0;$/;"	v	file:
+arg_offset	front/loc.c	/^static int arg_offset = -4;$/;"	v	file:
+argdecl	front/parser2.c	/^static AST argdecl() {$/;"	f	file:
+argdecls	front/parser2.c	/^static AST argdecls() {$/;"	f	file:
+argref	front/parser2.c	/^static AST argref() {$/;"	f	file:
+argrefs	front/parser2.c	/^static AST argrefs() {$/;"	f	file:
+array_type	front/type.c	/^AST array_type(char *name, AST e, int sz) {$/;"	f
+asnstmt	front/parser1.c	/^static AST asnstmt() {$/;"	f	file:
+asnstmt	front/parser2.c	/^static AST asnstmt(AST name) {$/;"	f	file:
+ast_buf	front/ast.c	/^static Node *ast_buf;$/;"	v	file:
+ast_cnt	front/ast.c	/^static int   ast_cnt;$/;"	v	file:
+ast_root	cgen/cgen1.c	/^static AST ast_root;$/;"	v	file:
+ast_root	cgen/cgen1.c	/^static int ast_root;$/;"	v	file:
+ast_root	cgen/cgen2.c	/^static AST ast_root;$/;"	v	file:
+ast_root	cgen/cgen2.c	/^static int ast_root;$/;"	v	file:
+ast_root	front/parser1.c	/^static AST ast_root;$/;"	v	file:
+ast_root	front/parser2.c	/^static AST ast_root;$/;"	v	file:
+backch	front/token.c	/^void backch(int ch) {$/;"	f
+backed	front/token.h	/^    int backed;		\/* ch backed by backch *\/$/;"	m	struct:Line
+begin	cgen/code.h	/^  int begin;$/;"	m	struct:cblock
+begin	front/sym.h	/^    int begin;$/;"	m	struct:scope
+block	front/parser1.c	/^static AST block() {$/;"	f	file:
+block	front/parser2.c	/^static AST block() {$/;"	f	file:
+bool	front/ast.h	/^typedef enum { false=0, true=1 } bool;$/;"	t	typeref:enum:__anon1
+buf	cgen/code.c	/^static char buf[256];$/;"	v	file:
+buf	front/token.h	/^    char buf[MAX_LINE];$/;"	m	struct:Line
+cGLOBAL	front/sym.h	/^    cLOCAL, cGLOBAL, 	  \/* constants *\/$/;"	e	enum:__anon3
+cLOCAL	front/sym.h	/^    cLOCAL, cGLOBAL, 	  \/* constants *\/$/;"	e	enum:__anon3
+callstmt	front/parser2.c	/^static AST callstmt(AST name) {$/;"	f	file:
+cblock	cgen/code.h	/^typedef struct cblock {$/;"	s
+cblock	cgen/code.h	/^} cblock;$/;"	t	typeref:struct:cblock
+cc	cgen/code.h	/^  unsigned char cc;$/;"	m	struct:regs
+cgen	cgen/cgen1.c	/^int cgen(AST a) {$/;"	f
+cgen	cgen/cgen2.c	/^int cgen(AST a) {$/;"	f
+cgen_asn	cgen/cgen1.c	/^static int cgen_asn(AST a) {$/;"	f	file:
+cgen_block	cgen/cgen1.c	/^static int cgen_block(AST a) {$/;"	f	file:
+cgen_block	cgen/cgen2.c	/^static int cgen_block(AST a) {$/;"	f	file:
+cgen_blocks	cgen/cgen1.c	/^static int cgen_blocks(AST a) {$/;"	f	file:
+cgen_blocks	cgen/cgen2.c	/^static int cgen_blocks(AST a) {$/;"	f	file:
+cgen_classdecl	cgen/cgen2.c	/^static int cgen_classdecl(AST a) {$/;"	f	file:
+cgen_classdecls	cgen/cgen2.c	/^static int cgen_classdecls(AST a) {$/;"	f	file:
+cgen_con	cgen/cgen1.c	/^static int cgen_con(AST a) {$/;"	f	file:
+cgen_expr	cgen/cgen1.c	/^static int cgen_expr(AST a) {$/;"	f	file:
+cgen_funcdecl	cgen/cgen2.c	/^static int cgen_funcdecl(AST a) {$/;"	f	file:
+cgen_funcdecls	cgen/cgen2.c	/^static int cgen_funcdecls(AST a) {$/;"	f	file:
+cgen_ifstmt	cgen/cgen1.c	/^static int cgen_ifstmt(AST a) {$/;"	f	file:
+cgen_imm	cgen/cgen1.c	/^static int cgen_imm(AST a) {$/;"	f	file:
+cgen_op2	cgen/cgen1.c	/^static int cgen_op2(AST a) {$/;"	f	file:
+cgen_stmt	cgen/cgen1.c	/^static int cgen_stmt(AST a) {$/;"	f	file:
+cgen_stmt	cgen/cgen2.c	/^static int cgen_stmt(AST a) {$/;"	f	file:
+cgen_stmts	cgen/cgen1.c	/^static int cgen_stmts(AST a) {$/;"	f	file:
+cgen_stmts	cgen/cgen2.c	/^static int cgen_stmts(AST a) {$/;"	f	file:
+cgen_vardecl	cgen/cgen2.c	/^static int cgen_vardecl(AST a) {$/;"	f	file:
+cgen_vardecls	cgen/cgen2.c	/^static int cgen_vardecls(AST a) {$/;"	f	file:
+cgen_vref	cgen/cgen1.c	/^static int cgen_vref(AST a, int lhs) {$/;"	f	file:
+classdecl	front/parser2.c	/^static AST classdecl() {$/;"	f	file:
+classdecls	front/parser2.c	/^static AST classdecls() {$/;"	f	file:
+classhead	front/parser2.c	/^static AST classhead() {$/;"	f	file:
+clear_lexeme	front/token.c	/^void clear_lexeme() { tok.index = 0; }$/;"	f
+clit	front/scanner.c	/^Token *clit(int ch) {$/;"	f
+cmt	front/scanner.c	/^static Token *cmt(int ch) {$/;"	f	file:
+code	cgen/code.c	/^static insn code[MAX_CODE];$/;"	v	file:
+code_cnt	cgen/code.c	/^static int  code_cnt;$/;"	v	file:
+code_root	cgen/cgen1.c	/^static int code_root;$/;"	v	file:
+code_root	cgen/cgen2.c	/^static int code_root;$/;"	v	file:
+codeblock	cgen/code.c	/^static cblock codeblock[MAX_CODEBLOCK];$/;"	v	file:
+codeblock_cnt	cgen/code.c	/^static int  codeblock_cnt;$/;"	v	file:
+codeof	front/token.c	/^int codeof(int ch) {$/;"	f
+con	front/parser1.c	/^static AST con() {$/;"	f	file:
+con	front/parser2.c	/^static AST con() {$/;"	f	file:
+con_seq	front/sym.c	/^static int con_seq;$/;"	v	file:
+copy_AST	front/ast.c	/^void copy_AST(AST dst, AST src) {$/;"	f
+cur	front/sym.c	/^static scope *cur = 0;$/;"	v	file:
+cur_depth	front/sym.c	/^static int cur_depth = 0;$/;"	v	file:
+cur_root	front/sym.c	/^static scope *cur_root;$/;"	v	file:
+decr_arg_offset	front/loc.c	/^inline void decr_arg_offset(int sz) { arg_offset -= sz;  }$/;"	f
+decr_depth	front/sym.c	/^inline void decr_depth() { --cur_depth; }$/;"	f
+delete_prev	front/token.c	/^void delete_prev() { --tok.index; }$/;"	f
+delete_scope	front/sym.c	/^void delete_scope(scope *sp) {$/;"	f
+depth	front/loc.h	/^    int depth;$/;"	m	struct:locentry
+display	cgen/code.c	/^int display(int lev) {$/;"	f
+dump_AST	front/ast.c	/^void dump_AST(FILE *fp) {$/;"	f
+dump_LOC	front/loc.c	/^void dump_LOC(FILE *fp) {$/;"	f
+dump_STR	front/token.c	/^void dump_STR(FILE *fp) {$/;"	f
+dump_SYM	front/sym.c	/^void dump_SYM(FILE *fp) {$/;"	f
+dump_code	cgen/code.c	/^void dump_code(FILE *fp) {$/;"	f
+dump_mem	cgen/code.c	/^void dump_mem() {$/;"	f
+dump_reg	cgen/code.c	/^void dump_reg() {$/;"	f
+dump_sons	front/ast.c	/^void dump_sons(Node *np,FILE *fp) {$/;"	f
+elem	front/type.c	/^inline AST elem(AST a) { return get_son0(a); }$/;"	f
+eliminate_null_list	front/ast.c	/^static int eliminate_null_list = 1;$/;"	v	file:
+end	cgen/code.h	/^  int end;$/;"	m	struct:cblock
+end	front/sym.h	/^    int end;$/;"	m	struct:scope
+enter_block	front/sym.c	/^void enter_block() {$/;"	f
+equal	front/type.c	/^static bool equal(AST x1, AST x2) {$/;"	f	file:
+equaltype	front/type.c	/^void equaltype(AST a1, AST a2) {$/;"	f
+exists	front/ast.c	/^AST exists(char *text) {$/;"	f
+expr	front/parser1.c	/^static AST expr() {$/;"	f	file:
+expr	front/parser2.c	/^static AST expr() {$/;"	f	file:
+exprs	front/parser1.c	/^static AST exprs() {$/;"	f	file:
+exprs	front/parser2.c	/^static AST exprs() {$/;"	f	file:
+fGLOBAL	front/sym.h	/^    fLOCAL, fGLOBAL, 	  \/* functions *\/$/;"	e	enum:__anon3
+fLOCAL	front/sym.h	/^    fLOCAL, fGLOBAL, 	  \/* functions *\/$/;"	e	enum:__anon3
+factor	front/parser1.c	/^static AST factor() {$/;"	f	file:
+false	front/ast.h	/^typedef enum { false=0, true=1 } bool;$/;"	e	enum:__anon1
+father	front/ast.h	/^  AST       father;$/;"	m	struct:Node
+fix_labels	cgen/code.c	/^int fix_labels() {$/;"	f
+flit	front/scanner.c	/^Token *flit(int ch) {$/;"	f
+func_seq	front/sym.c	/^static int func_seq;$/;"	v	file:
+func_type	front/type.c	/^AST func_type(char *name, AST e) {$/;"	f
+funcdecl	front/parser2.c	/^static AST funcdecl() {$/;"	f	file:
+funcdecls	front/parser2.c	/^static AST funcdecls(AST fdl) {$/;"	f	file:
+gen	front/sym.c	/^char *gen(int kind) {$/;"	f
+gen_code	cgen/code.c	/^int gen_code(int op, int lev, int val) {$/;"	f
+gen_label	cgen/code.c	/^int gen_label(int l) {$/;"	f
+get_STR_offset	front/token.c	/^inline int get_STR_offset(char *p) { return p - s_buf; }$/;"	f
+get_arg_offset	front/loc.c	/^inline int  get_arg_offset()        { return arg_offset; }$/;"	f
+get_cur_code	cgen/code.c	/^int get_cur_code() { return code_cnt; }$/;"	f
+get_cur_depth	front/sym.c	/^inline int get_cur_depth () { return cur_depth; }$/;"	f
+get_ival	front/ast.c	/^int get_ival(AST a) {$/;"	f
+get_loc_entry	front/loc.c	/^void get_loc_entry(int e, int *dep, int *off, int *size) {$/;"	f
+get_node	front/ast.c	/^void get_node(AST a, int *type, char *text, int *ival) {$/;"	f
+get_sizeoftype	front/type.c	/^int get_sizeoftype(AST ty) {$/;"	f
+get_son0	front/ast.c	/^AST get_son0(AST a) {$/;"	f
+get_sons	front/ast.c	/^void get_sons(AST a, AST *s0, AST *s1, AST *s2, AST *s3) {$/;"	f
+get_text	front/ast.c	/^char *get_text(AST a) {$/;"	f
+get_typeofnode	front/ast.c	/^inline AST get_typeofnode(AST a) {$/;"	f
+get_var_offset	front/loc.c	/^inline int  get_var_offset()        { return var_offset; }$/;"	f
+getdepth_LOC	front/loc.c	/^int getdepth_LOC(int e) {$/;"	f
+getdepth_SYM	front/sym.c	/^int getdepth_SYM(int k) {$/;"	f
+getlineno	front/token.c	/^int getlineno()  { return line.no; }$/;"	f
+getlinepos	front/token.c	/^int getlinepos() { return line.pos; }$/;"	f
+getloc_SYM	front/sym.c	/^int getloc_SYM(int k) {$/;"	f
+getoffset_LOC	front/loc.c	/^int getoffset_LOC(int e) {$/;"	f
+getoffset_SYM	front/sym.c	/^int getoffset_SYM(int k) {$/;"	f
+getoptype	cgen/code.c	/^static int getoptype(char *name) {$/;"	f	file:
+getsize_LOC	front/loc.c	/^int getsize_LOC(int e) {$/;"	f
+gettoken	front/scanner.c	/^Token *gettoken() {$/;"	f
+gettoken0	front/scanner.c	/^static Token *gettoken0() {$/;"	f	file:
+gettype_SYM	front/sym.c	/^int gettype_SYM(int k) {$/;"	f
+getval_SYM	front/sym.c	/^int getval_SYM(int k) {$/;"	f
+hexval	front/scanner.c	/^static int hexval(int ch) {$/;"	f	file:
+id	front/scanner.c	/^static Token *id(int ch) {$/;"	f	file:
+ifstmt	front/parser1.c	/^static AST ifstmt() {$/;"	f	file:
+ifstmt	front/parser2.c	/^static AST ifstmt() {$/;"	f	file:
+incr_depth	front/sym.c	/^inline void incr_depth() { ++cur_depth; }$/;"	f
+incr_var_offset	front/loc.c	/^inline void incr_var_offset(int sz) { var_offset += sz;  }$/;"	f
+index	front/token.h	/^    int  index;$/;"	m	struct:Token
+init_AST	front/ast.c	/^void init_AST() {$/;"	f
+init_LOC	front/loc.c	/^void init_LOC() {$/;"	f
+init_SYM	front/sym.c	/^void init_SYM() { $/;"	f
+init_mem	cgen/code.c	/^void init_mem() {$/;"	f
+init_reg	cgen/code.c	/^void init_reg() {$/;"	f
+initline	front/token.c	/^void initline() {$/;"	f
+insert_STR	front/token.c	/^char *insert_STR(char *s) {$/;"	f
+insert_SYM	front/sym.c	/^int insert_SYM(char *name, int type, int prop, int val) {$/;"	f
+insn	cgen/code.h	/^typedef struct insn {$/;"	s
+insn	cgen/code.h	/^} insn;$/;"	t	typeref:struct:insn
+insn_code	cgen/code.h	23;"	d
+interp	cgen/code.c	/^void interp() {$/;"	f
+isleaf	front/ast.c	/^bool isleaf(AST a) {$/;"	f
+islist	front/ast.c	/^bool islist(AST a) {$/;"	f
+isprimtype	front/parser1.c	/^inline static bool isprimtype(int k) {$/;"	f	file:
+isprimtype	front/parser2.c	/^static bool isprimtype(int k) {$/;"	f	file:
+isspace	front/scanner.c	/^inline int isspace(int ch) {$/;"	f
+ival	front/ast.h	/^  int       ival;$/;"	m	struct:Node
+ival	front/token.h	/^    int  ival;	\/* if sym==OP, optype is stored *\/$/;"	m	struct:Token
+keep	front/scanner.c	/^static int keep = 0;$/;"	v	file:
+kwentry	front/token.h	/^typedef struct kwentry {$/;"	s
+kwentry	front/token.h	/^} kwentry;$/;"	t	typeref:struct:kwentry
+kwlookup	front/token.c	/^kwentry *kwlookup(const char *t) {$/;"	f
+kwtable	front/token.c	/^static kwentry kwtable[] = {$/;"	v	file:
+label_seq	cgen/code.c	/^static int label_seq = 0;$/;"	v	file:
+labelcnt	cgen/code.c	/^static int labelcnt;$/;"	v	file:
+labeltbl	cgen/code.c	/^static int labeltbl[100];$/;"	v	file:
+leave_block	front/sym.c	/^void leave_block() {$/;"	f
+lev	cgen/code.h	/^  int lev:8;$/;"	m	struct:insn
+line	front/token.c	/^Line line;$/;"	v
+lit	front/scanner.c	/^static Token *lit(int ch) {$/;"	f	file:
+loc	front/sym.h	/^    int  loc;$/;"	m	struct:__anon4
+loccnt	front/loc.c	/^static int loccnt;$/;"	v	file:
+locentry	front/loc.h	/^typedef struct locentry {$/;"	s
+locentry	front/loc.h	/^} locentry;$/;"	t	typeref:struct:locentry
+loctab	front/loc.c	/^static locentry *loctab;$/;"	v	file:
+lookup_SYM	front/sym.c	/^int lookup_SYM(char *name) {$/;"	f
+lookup_SYM_all	front/sym.c	/^int lookup_SYM_all(char *name) {$/;"	f
+lookup_cur	front/sym.c	/^int lookup_cur(scope *sp, char *name) {$/;"	f
+lookup_loc_entry	front/loc.c	/^int lookup_loc_entry(int dep, int off, int size) {$/;"	f
+lval	front/parser1.c	/^static AST lval() {$/;"	f	file:
+lval	front/parser2.c	/^static AST lval() {$/;"	f	file:
+main	cgen/cgen1.c	/^int main() {$/;"	f
+main	cgen/cgen2.c	/^int main() {$/;"	f
+main	front/parser1.c	/^int main() {$/;"	f
+main	front/parser2.c	/^int main() {$/;"	f
+main	front/scanner.c	/^int main() {$/;"	f
+make_AST	front/ast.c	/^AST make_AST(int type, AST s0, AST s1, AST s2, AST s3) {$/;"	f
+make_AST_argdecl	front/ast.c	/^AST make_AST_argdecl(AST name, AST type) {$/;"	f
+make_AST_asn	front/ast.c	/^AST make_AST_asn(int op, AST s0, AST s1) {$/;"	f
+make_AST_con	front/ast.c	/^AST make_AST_con(char *text, int val) {$/;"	f
+make_AST_funcdecl	front/ast.c	/^AST make_AST_funcdecl(AST name, AST type, AST args, AST block) {$/;"	f
+make_AST_if	front/ast.c	/^AST make_AST_if(AST s0, AST s1, AST s2) {$/;"	f
+make_AST_imm	front/ast.c	/^AST make_AST_imm(int val) {$/;"	f
+make_AST_name	front/ast.c	/^AST make_AST_name(char *text) {$/;"	f
+make_AST_op2	front/ast.c	/^AST make_AST_op2(int op, AST s0, AST s1) {$/;"	f
+make_AST_prim	front/ast.c	/^AST make_AST_prim(char *text) {$/;"	f
+make_AST_var	front/ast.c	/^AST make_AST_var(char *text,int val) {$/;"	f
+make_AST_vardecl	front/ast.c	/^AST make_AST_vardecl(AST name, AST type) {$/;"	f
+make_AST_vref	front/ast.c	/^AST make_AST_vref(char *text,int val) {$/;"	f
+make_type	front/type.c	/^AST make_type(char *name) {$/;"	f
+mark_args	front/sym.c	/^void mark_args()   { arg_mark = symcnt; }$/;"	f
+mem	cgen/code.c	/^static int  mem[MAX_MEM];$/;"	v	file:
+mem_cnt	cgen/code.c	/^static int  mem_cnt;$/;"	v	file:
+mod	front/parser1.c	/^static AST mod(AST elem) {$/;"	f	file:
+mod	front/parser2.c	/^static AST mod(AST elem) {$/;"	f	file:
+movestr	cgen/code.c	/^void movestr(insn x) {$/;"	f
+nARG	front/ast.h	/^  nARGS, nARG,			\/* for funcall  *\/$/;"	e	enum:__anon2
+nARGDECL	front/ast.h	/^  nARGDECLS, nARGDECL, 		\/* for funcdecl *\/$/;"	e	enum:__anon2
+nARGDECLS	front/ast.h	/^  nARGDECLS, nARGDECL, 		\/* for funcdecl *\/$/;"	e	enum:__anon2
+nARGS	front/ast.h	/^  nARGS, nARG,			\/* for funcall  *\/$/;"	e	enum:__anon2
+nASN	front/ast.h	/^  nSTMTS, nSTMT, nASN, nIF, nEXPRS, nEXPR, nVREF,$/;"	e	enum:__anon2
+nBLOCK	front/ast.h	/^  nCLASSHEAD, nBLOCK, $/;"	e	enum:__anon2
+nBREAK	front/ast.h	/^  nCALL, nRET, nBREAK, nCONTINUE,$/;"	e	enum:__anon2
+nCALL	front/ast.h	/^  nCALL, nRET, nBREAK, nCONTINUE,$/;"	e	enum:__anon2
+nCLASSDECL	front/ast.h	/^  nCLASSDECLS, nCLASSDECL, $/;"	e	enum:__anon2
+nCLASSDECLS	front/ast.h	/^  nCLASSDECLS, nCLASSDECL, $/;"	e	enum:__anon2
+nCLASSHEAD	front/ast.h	/^  nCLASSHEAD, nBLOCK, $/;"	e	enum:__anon2
+nCON	front/ast.h	/^  nVARS, nVAR, nCON, nIMM, nNAME, $/;"	e	enum:__anon2
+nCONTINUE	front/ast.h	/^  nCALL, nRET, nBREAK, nCONTINUE,$/;"	e	enum:__anon2
+nDEREF	front/ast.h	/^  nOP1, nOP2, nDEREF, nLVAL,$/;"	e	enum:__anon2
+nEND	front/ast.h	/^  nEND, nERROR = -1$/;"	e	enum:__anon2
+nERROR	front/ast.h	/^  nEND, nERROR = -1$/;"	e	enum:__anon2
+nEXPR	front/ast.h	/^  nSTMTS, nSTMT, nASN, nIF, nEXPRS, nEXPR, nVREF,$/;"	e	enum:__anon2
+nEXPRS	front/ast.h	/^  nSTMTS, nSTMT, nASN, nIF, nEXPRS, nEXPR, nVREF,$/;"	e	enum:__anon2
+nFUNCDECL	front/ast.h	/^  nFUNCDECLS, nFUNCDECL, $/;"	e	enum:__anon2
+nFUNCDECLS	front/ast.h	/^  nFUNCDECLS, nFUNCDECL, $/;"	e	enum:__anon2
+nIF	front/ast.h	/^  nSTMTS, nSTMT, nASN, nIF, nEXPRS, nEXPR, nVREF,$/;"	e	enum:__anon2
+nIMM	front/ast.h	/^  nVARS, nVAR, nCON, nIMM, nNAME, $/;"	e	enum:__anon2
+nLVAL	front/ast.h	/^  nOP1, nOP2, nDEREF, nLVAL,$/;"	e	enum:__anon2
+nNAME	front/ast.h	/^  nVARS, nVAR, nCON, nIMM, nNAME, $/;"	e	enum:__anon2
+nOP1	front/ast.h	/^  nOP1, nOP2, nDEREF, nLVAL,$/;"	e	enum:__anon2
+nOP2	front/ast.h	/^  nOP1, nOP2, nDEREF, nLVAL,$/;"	e	enum:__anon2
+nPROG	front/ast.h	/^  nPROG=1024, $/;"	e	enum:__anon2
+nRET	front/ast.h	/^  nCALL, nRET, nBREAK, nCONTINUE,$/;"	e	enum:__anon2
+nSTMT	front/ast.h	/^  nSTMTS, nSTMT, nASN, nIF, nEXPRS, nEXPR, nVREF,$/;"	e	enum:__anon2
+nSTMTS	front/ast.h	/^  nSTMTS, nSTMT, nASN, nIF, nEXPRS, nEXPR, nVREF,$/;"	e	enum:__anon2
+nVAR	front/ast.h	/^  nVARS, nVAR, nCON, nIMM, nNAME, $/;"	e	enum:__anon2
+nVARDECL	front/ast.h	/^  nVARDECLS, nVARDECL, $/;"	e	enum:__anon2
+nVARDECLS	front/ast.h	/^  nVARDECLS, nVARDECL, $/;"	e	enum:__anon2
+nVARS	front/ast.h	/^  nVARS, nVAR, nCON, nIMM, nNAME, $/;"	e	enum:__anon2
+nVREF	front/ast.h	/^  nSTMTS, nSTMT, nASN, nIF, nEXPRS, nEXPR, nVREF,$/;"	e	enum:__anon2
+name	front/parser1.c	/^static AST name() {$/;"	f	file:
+name	front/parser2.c	/^static AST name() {$/;"	f	file:
+name	front/sym.h	/^    char *name;$/;"	m	struct:__anon4
+nameof	front/ast.c	/^static char *nameof(int n) {$/;"	f	file:
+nameof	front/token.c	/^static char *nameof(int sym) {$/;"	f	file:
+namestr	front/ast.c	/^static char *namestr[] = {$/;"	v	file:
+namestr	front/sym.c	/^static char *namestr[] = {$/;"	v	file:
+new_AST	front/ast.c	/^AST new_AST() {$/;"	f
+new_cblock	cgen/code.c	/^int new_cblock() { return ++codeblock_cnt; }$/;"	f
+new_code	cgen/code.c	/^int new_code() { return ++code_cnt; }$/;"	f
+new_label	cgen/code.c	/^int new_label() { return ++label_seq; }$/;"	f
+new_list	front/ast.c	/^AST new_list(int type) {$/;"	f
+new_loc	front/loc.c	/^int new_loc() {$/;"	f
+new_scope	front/sym.c	/^static scope *new_scope() {$/;"	f	file:
+next	cgen/code.h	/^  struct cblock *next;$/;"	m	struct:cblock	typeref:struct:cblock::cblock
+next	front/sym.h	/^    struct scope *next;$/;"	m	struct:scope	typeref:struct:scope::scope
+nextch	front/token.c	/^int nextch() {$/;"	f
+no	front/token.h	/^    int no;$/;"	m	struct:Line
+node_type	front/ast.h	/^} node_type;$/;"	t	typeref:enum:__anon2
+nodetype	front/ast.c	/^int nodetype(AST a) {$/;"	f
+nodetypeval	front/ast.c	/^static int nodetypeval(char *text) {$/;"	f	file:
+offset	front/loc.h	/^    int offset;$/;"	m	struct:locentry
+op	cgen/code.h	/^  int op :8;$/;"	m	struct:insn
+op	front/scanner.c	/^static Token *op(int ch) {$/;"	f	file:
+op_dup	front/scanner.c	/^static Token *op_dup(int ch) {$/;"	f	file:
+op_eq	front/scanner.c	/^static Token *op_eq(int ch) {$/;"	f	file:
+opcodetype	cgen/code.h	/^enum opcodetype {$/;"	g
+operator	cgen/code.c	/^void operator(insn x) {$/;"	f
+optypename	cgen/code.c	/^static char *optypename[] = {$/;"	v	file:
+outch	front/token.c	/^void outch(int ch) { tok.text[tok.index++] = ch; }$/;"	f
+pEND	front/sym.h	/^    pEND$/;"	e	enum:__anon3
+parse_error	front/token.c	/^void parse_error(const char *s) {$/;"	f
+pointer_type	front/type.c	/^AST pointer_type(char *name, AST e) {$/;"	f
+pop	cgen/code.c	/^inline int  pop()       { return mem[--reg.T]; }$/;"	f
+pos	front/token.h	/^    int pos;$/;"	m	struct:Line
+prev_error_line_no	front/token.c	/^static int prev_error_line_no = 0;$/;"	v	file:
+prevch	front/token.c	/^int  prevch() { return (tok.index>0) ? (tok.text[tok.index-1]) : '\\n'; }$/;"	f
+primtype	front/parser1.c	/^static AST primtype() {$/;"	f	file:
+primtype	front/parser2.c	/^static AST primtype() {$/;"	f	file:
+print_AST	front/ast.c	/^void print_AST(AST a) {$/;"	f
+print_Node_begin	front/ast.c	/^static void print_Node_begin(Node *np)  {$/;"	f	file:
+print_Node_end	front/ast.c	/^static void print_Node_end(Node *np) {$/;"	f	file:
+print_insn	cgen/code.c	/^void print_insn(insn x,FILE *fp) {$/;"	f
+print_type	front/type.c	/^void print_type(AST a) {$/;"	f
+program	front/parser2.c	/^static AST program() {$/;"	f	file:
+prop	front/sym.h	/^    int  prop;$/;"	m	struct:__anon4
+propname	front/sym.c	/^static char *propname(int prop) {$/;"	f	file:
+propval	front/sym.c	/^int propval(char *text) {$/;"	f
+push	cgen/code.c	/^inline void push(int x) { mem[reg.T++] = x; }$/;"	f
+reg	cgen/code.c	/^static regs reg;$/;"	v	file:
+regs	cgen/code.h	/^typedef struct regs {$/;"	s
+regs	cgen/code.h	/^} regs; $/;"	t	typeref:struct:regs
+reset_offset	front/loc.c	/^inline void reset_offset()          { var_offset = 0; arg_offset = -4;}$/;"	f
+restore_AST	front/ast.c	/^int restore_AST(FILE *fp) {$/;"	f
+restore_LOC	front/loc.c	/^int restore_LOC(FILE *fp) {$/;"	f
+restore_SYM	front/sym.c	/^int restore_SYM(FILE *fp) {$/;"	f
+returnstmt	front/parser2.c	/^static AST returnstmt() {$/;"	f	file:
+s_buf	front/token.c	/^static char *s_buf;$/;"	v	file:
+s_limit	front/token.c	/^static char *s_limit;$/;"	v	file:
+s_ptr	front/token.c	/^static char *s_ptr;$/;"	v	file:
+scancode	front/token.c	/^static int scancode[] = {$/;"	v	file:
+scope	front/sym.h	/^typedef struct scope {$/;"	s
+scope	front/sym.h	/^} scope;$/;"	t	typeref:struct:scope
+scope_buf	front/sym.c	/^static scope *scope_buf;$/;"	v	file:
+scope_cnt	front/sym.c	/^static int scope_cnt;$/;"	v	file:
+set_argtypeofnode	front/ast.c	/^inline void set_argtypeofnode(AST a, AST t) {$/;"	f
+set_cblock	cgen/code.c	/^void set_cblock(int c, int b, int e) {$/;"	f
+set_code	cgen/code.c	/^void set_code(int c, int op, int lev, int val) {$/;"	f
+set_ival	front/ast.c	/^void set_ival(AST a, int v) {$/;"	f
+set_loc_entry	front/loc.c	/^void set_loc_entry(int e, int dep, int off, int size) {$/;"	f
+set_node	front/ast.c	/^void set_node(AST a, int type, char *text, int ival) {$/;"	f
+set_nodetype	front/ast.c	/^void set_nodetype(AST a,int n) {$/;"	f
+set_son0	front/ast.c	/^static void set_son0(AST a, AST s0) {$/;"	f	file:
+set_son1	front/ast.c	/^static void set_son1(AST a, AST s1) {$/;"	f	file:
+set_sons	front/ast.c	/^void set_sons(AST a, AST s0, AST s1, AST s2, AST s3) {$/;"	f
+set_typeofnode	front/ast.c	/^inline void set_typeofnode(AST a, AST t) {$/;"	f
+setprop_SYM	front/sym.c	/^void setprop_SYM(int k, int prop) {$/;"	f
+setval_SYM	front/sym.c	/^void setval_SYM(int k, int val) {$/;"	f
+show_cblock_stmt	cgen/cgen1.c	/^static int show_cblock_stmt(int cb,int ce) {$/;"	f	file:
+show_cblock_stmt	cgen/cgen2.c	/^static int show_cblock_stmt(int cb,int ce) {$/;"	f	file:
+size	front/loc.h	/^    int size;$/;"	m	struct:locentry
+sizeof_local	cgen/cgen1.c	/^static int sizeof_local(AST a) {$/;"	f	file:
+sizeof_local	cgen/cgen2.c	/^static int sizeof_local(AST a) {$/;"	f	file:
+sizeof_locals	cgen/cgen1.c	/^static int sizeof_locals(AST a) {$/;"	f	file:
+sizeof_locals	cgen/cgen2.c	/^static int sizeof_locals(AST a) {$/;"	f	file:
+skiptoken	front/scanner.c	/^void skiptoken(int sym) {$/;"	f
+skiptoken2	front/scanner.c	/^void skiptoken2(int sym1,int sym2) {$/;"	f
+skiptoken3	front/scanner.c	/^void skiptoken3(int sym1,int sym2,int sym3) {$/;"	f
+slit	front/scanner.c	/^Token *slit(int ch) {$/;"	f
+son	front/ast.h	/^  AST       son[4];$/;"	m	struct:Node
+start_parser	front/parser1.c	/^int start_parser() {$/;"	f
+start_parser	front/parser2.c	/^int start_parser() {$/;"	f
+stmt	front/parser1.c	/^static AST stmt() {$/;"	f	file:
+stmt	front/parser2.c	/^static AST stmt() {$/;"	f	file:
+stmts	front/parser1.c	/^static AST stmts() {$/;"	f	file:
+stmts	front/parser2.c	/^static AST stmts() {$/;"	f	file:
+sval	front/token.h	/^    char *sval;$/;"	m	struct:Token
+sym	front/token.h	/^    enum tokentype sym;$/;"	m	struct:Token	typeref:enum:Token::tokentype
+sym	front/token.h	/^    int sym;$/;"	m	struct:kwentry
+symcnt	front/sym.c	/^static int symcnt;$/;"	v	file:
+symentry	front/sym.h	/^} symentry ;$/;"	t	typeref:struct:__anon4
+symtab	front/sym.c	/^static symentry *symtab;$/;"	v	file:
+tARRAY	front/type.h	/^    tPRIM, tARRAY, tPOINTER, tSTRUCT, tFUNC $/;"	e	enum:__anon5
+tBREAK	front/token.h	/^tBREAK, tCONTINUE, tWHILE, tDO, tFOR, tCALL, tRETURN,$/;"	e	enum:tokentype
+tCALL	front/token.h	/^tBREAK, tCONTINUE, tWHILE, tDO, tFOR, tCALL, tRETURN,$/;"	e	enum:tokentype
+tCASE	front/token.h	/^tIF, tELSE, tSWITCH, tCASE, tDEFAULT,$/;"	e	enum:tokentype
+tCHAR	front/type.h	/^    tINT=512, tCHAR, tFLOAT, tSTRING,$/;"	e	enum:__anon5
+tCLASS	front/token.h	/^tCLASS, tPRIVATE, tPUBLIC, tSTATIC, tCONST,$/;"	e	enum:tokentype
+tCONST	front/token.h	/^tCLASS, tPRIVATE, tPUBLIC, tSTATIC, tCONST,$/;"	e	enum:tokentype
+tCONTINUE	front/token.h	/^tBREAK, tCONTINUE, tWHILE, tDO, tFOR, tCALL, tRETURN,$/;"	e	enum:tokentype
+tDEFAULT	front/token.h	/^tIF, tELSE, tSWITCH, tCASE, tDEFAULT,$/;"	e	enum:tokentype
+tDO	front/token.h	/^tBREAK, tCONTINUE, tWHILE, tDO, tFOR, tCALL, tRETURN,$/;"	e	enum:tokentype
+tELSE	front/token.h	/^tIF, tELSE, tSWITCH, tCASE, tDEFAULT,$/;"	e	enum:tokentype
+tEND	front/token.h	/^tEND, ERROR=-1 };$/;"	e	enum:tokentype
+tFALSE	front/token.h	/^tFALSE, tTRUE, $/;"	e	enum:tokentype
+tFLOAT	front/type.h	/^    tINT=512, tCHAR, tFLOAT, tSTRING,$/;"	e	enum:__anon5
+tFOR	front/token.h	/^tBREAK, tCONTINUE, tWHILE, tDO, tFOR, tCALL, tRETURN,$/;"	e	enum:tokentype
+tFUNC	front/type.h	/^    tPRIM, tARRAY, tPOINTER, tSTRUCT, tFUNC $/;"	e	enum:__anon5
+tGLOBAL	front/sym.h	/^    tLOCAL, tGLOBAL,	  \/* datatypes (classes) *\/$/;"	e	enum:__anon3
+tIF	front/token.h	/^tIF, tELSE, tSWITCH, tCASE, tDEFAULT,$/;"	e	enum:tokentype
+tINT	front/type.h	/^    tINT=512, tCHAR, tFLOAT, tSTRING,$/;"	e	enum:__anon5
+tLOCAL	front/sym.h	/^    tLOCAL, tGLOBAL,	  \/* datatypes (classes) *\/$/;"	e	enum:__anon3
+tPOINTER	front/type.h	/^    tPRIM, tARRAY, tPOINTER, tSTRUCT, tFUNC $/;"	e	enum:__anon5
+tPRIM	front/type.h	/^    tPRIM, tARRAY, tPOINTER, tSTRUCT, tFUNC $/;"	e	enum:__anon5
+tPRIVATE	front/token.h	/^tCLASS, tPRIVATE, tPUBLIC, tSTATIC, tCONST,$/;"	e	enum:tokentype
+tPUBLIC	front/token.h	/^tCLASS, tPRIVATE, tPUBLIC, tSTATIC, tCONST,$/;"	e	enum:tokentype
+tRETURN	front/token.h	/^tBREAK, tCONTINUE, tWHILE, tDO, tFOR, tCALL, tRETURN,$/;"	e	enum:tokentype
+tSTATIC	front/token.h	/^tCLASS, tPRIVATE, tPUBLIC, tSTATIC, tCONST,$/;"	e	enum:tokentype
+tSTRING	front/type.h	/^    tINT=512, tCHAR, tFLOAT, tSTRING,$/;"	e	enum:__anon5
+tSTRUCT	front/type.h	/^    tPRIM, tARRAY, tPOINTER, tSTRUCT, tFUNC $/;"	e	enum:__anon5
+tSWITCH	front/token.h	/^tIF, tELSE, tSWITCH, tCASE, tDEFAULT,$/;"	e	enum:tokentype
+tTRUE	front/token.h	/^tFALSE, tTRUE, $/;"	e	enum:tokentype
+tWHILE	front/token.h	/^tBREAK, tCONTINUE, tWHILE, tDO, tFOR, tCALL, tRETURN,$/;"	e	enum:tokentype
+term	front/parser1.c	/^static AST term() {$/;"	f	file:
+texp_type	front/type.h	/^} texp_type;$/;"	t	typeref:enum:__anon5
+text	front/ast.h	/^  char      *text;$/;"	m	struct:Node
+text	front/token.h	/^    char *text;$/;"	m	struct:kwentry
+text	front/token.h	/^    char text[MAX_LEXEME+1];$/;"	m	struct:Token
+tmp	front/token.c	/^static char tmp[4];$/;"	v	file:
+tnamestr	front/ast.c	/^static char *tnamestr[] = {$/;"	v	file:
+tok	front/token.c	/^Token tok;$/;"	v
+tokenname	front/token.c	/^static char *tokenname[] = {$/;"	v	file:
+tokentype	front/token.h	/^enum tokentype {ID=256, ILIT, CLIT, FLIT, SLIT,$/;"	g
+true	front/ast.h	/^typedef enum { false=0, true=1 } bool;$/;"	e	enum:__anon1
+type	front/ast.h	/^  node_type type;$/;"	m	struct:Node
+type	front/sym.h	/^    int  type;$/;"	m	struct:__anon4
+type_seq	front/sym.c	/^static int type_seq;$/;"	v	file:
+typedecl	front/parser1.c	/^static AST typedecl() {$/;"	f	file:
+typedecl	front/parser2.c	/^static AST typedecl() {$/;"	f	file:
+typeof_AST	front/type.c	/^AST typeof_AST(AST t) {$/;"	f
+unmark_args	front/sym.c	/^void unmark_args() { arg_mark = cur->end; }$/;"	f
+vARG	front/sym.h	/^    vARG,$/;"	e	enum:__anon3
+vGLOBAL	front/sym.h	/^    vLOCAL=2048, vGLOBAL,  \/* variables *\/$/;"	e	enum:__anon3
+vLOCAL	front/sym.h	/^    vLOCAL=2048, vGLOBAL,  \/* variables *\/$/;"	e	enum:__anon3
+val	cgen/code.h	/^  int val:16;$/;"	m	struct:insn
+val	front/sym.h	/^    int  val;$/;"	m	struct:__anon4
+valueof	front/ast.c	/^static int valueof(char *text, char **list) {$/;"	f	file:
+var	front/parser1.c	/^static AST var(AST type) {$/;"	f	file:
+var	front/parser2.c	/^static AST var() {$/;"	f	file:
+var_offset	front/loc.c	/^static int var_offset = 0;$/;"	v	file:
+var_seq	front/sym.c	/^static int var_seq;$/;"	v	file:
+vardecl	front/parser1.c	/^static AST vardecl() {$/;"	f	file:
+vardecl	front/parser2.c	/^static AST vardecl() { \/* TODO: allow vars *\/$/;"	f	file:
+vardecls	front/parser1.c	/^static AST vardecls(AST vdl, AST fdl) {$/;"	f	file:
+vardecls	front/parser2.c	/^static AST vardecls(AST vdl, AST fdl) {$/;"	f	file:
+vars	front/parser1.c	/^static AST vars(AST type) {$/;"	f	file:
+vref	front/parser1.c	/^static AST vref()  {$/;"	f	file:
+vref	front/parser2.c	/^static AST vref() {$/;"	f	file:
+xml	front/ast.c	/^static int xml = 0;$/;"	v	file:
+zero	front/parser1.c	/^static AST zero;$/;"	v	file:
