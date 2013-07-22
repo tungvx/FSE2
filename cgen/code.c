@@ -258,26 +258,32 @@ void operator(insn x) {
       case 2: /* ADD */
         t2 = pop(); t1 = pop();
         push(t1+t2);
+	reg.cc = ((t1+t2) != 0);
         break;
       case 3: /* SUB */
         t2 = pop(); t1 = pop();
         push(t1-t2);
+	reg.cc = ((t1-t2) != 0);
         break;
       case 4: /* MUL */
         t2 = pop(); t1 = pop();
         push(t1*t2);
+	reg.cc = ((t1*t2) != 0);
         break;
       case 5: /* DIV */
         t2 = pop(); t1 = pop();
         push(t1/t2);
+	reg.cc = ((t1/t2) != 0);
         break;
       case 6: /* MOD */
         t2 = pop(); t1 = pop();
         push(t1%t2);
+	reg.cc = ((t1%t2) != 0);
         break;
       case 7: /* NEG */
         t1 = pop();
         push(-t1);
+	reg.cc = (t1 != 0);
         break;
       case 8: 
         t2 = pop(); t1 = pop();
