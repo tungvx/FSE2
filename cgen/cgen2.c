@@ -39,9 +39,6 @@ int main() {
     dump_AST(stdout);
 
     printf("\n");
-    dump_SYM(stdout);
-
-    printf("\n");
     dump_LOC(stdout);
 
     printf("\n");
@@ -49,6 +46,9 @@ int main() {
 
     cgen(ast_root);
     dump_code(stdout);
+    
+    printf("\n");
+    dump_SYM(stdout);
 
     fix_labels();
     interp();
@@ -113,13 +113,15 @@ static int cgen_funcdecls(AST a) {
 static int cgen_funcdecl(AST a) {
     AST a1, a2, a3, a4;
     int c=0;
-    int lbl;
+    int lbl1, lbl2;
 
     get_sons(a, &a1, &a2, &a3, &a4);
 
-    /* TODO: make begin/end label */
-    lbl = new_label();
-    gen_label(lbl /* dummy */ );
+    lbl1 = new_label();
+    // set begin label to val field of ast
+    setval_SYM(get_ival(a1), lbl1);
+    lbl2 = new_label();
+    gen_label(lbl1);
 
     incr_depth();
     c = cgen_block(a4);

@@ -256,7 +256,8 @@ static AST vardecl() { /* TODO: allow vars */
     if (t->sym == '(') { /* oops, it was func */
       gettoken();
       set_nodetype(a1, nNAME); /* change to NAME */
-      insert_SYM(get_text(a1), ft=func_type(gen(fLOCAL),a2), fLOCAL,0 /* dummy */ );
+      idx = insert_SYM(get_text(a1), ft=func_type(gen(fLOCAL),a2), fLOCAL,0 /* dummy */ );
+      set_ival(a1, idx);
 
       a3 = argdecls();
       set_argtypeofnode(ft,a3);
@@ -290,7 +291,8 @@ static AST funcdecl() {
     a2 = typedecl();
     a1 = name();
     ftype = func_type(gen(fLOCAL),a2);
-    insert_SYM(get_text(a1), ftype, fLOCAL, 0/* dummy */);
+    int idx = insert_SYM(get_text(a1), ftype, fLOCAL, 0/* dummy */);
+    set_ival(a1, idx);
 
     if (t->sym == '(') { /* must be func */
       gettoken();
