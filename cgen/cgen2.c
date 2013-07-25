@@ -24,6 +24,7 @@ static int sizeof_locals(AST);
 static int sizeof_local(AST);
 static int cgen_stmts(AST);
 static int cgen_stmt(AST);
+static int cgen_funccall(AST);
 
 static int ast_root;
 
@@ -46,7 +47,7 @@ int main() {
 
     cgen(ast_root);
     dump_code(stdout);
-    
+
     printf("\n");
     dump_SYM(stdout);
 
@@ -67,9 +68,9 @@ static int cgen_classdecls(AST a) {
     AST a1, a2;
     int c=0;
     while (!isleaf(a)) {
-         get_sons(a, &a1, &a2, 0, 0);
-         c = cgen_classdecl(a1);
-         a = a2;
+	get_sons(a, &a1, &a2, 0, 0);
+	c = cgen_classdecl(a1);
+	a = a2;
     }
     return c;
 }
@@ -88,9 +89,9 @@ static int cgen_vardecls(AST a) {
     AST a1, a2;
     int c=0;
     while (!isleaf(a)) {
-         get_sons(a, &a1, &a2, 0, 0);
-         c = cgen_vardecl(a1);
-         a = a2;
+	get_sons(a, &a1, &a2, 0, 0);
+	c = cgen_vardecl(a1);
+	a = a2;
     }
     return c;
 }
@@ -103,9 +104,9 @@ static int cgen_funcdecls(AST a) {
     AST a1, a2;
     int c=0;
     while (!isleaf(a)) {
-         get_sons(a, &a1, &a2, 0, 0);
-         c = cgen_funcdecl(a1);
-         a = a2;
+	get_sons(a, &a1, &a2, 0, 0);
+	c = cgen_funcdecl(a1);
+	a = a2;
     }
     return c;
 }
@@ -113,14 +114,13 @@ static int cgen_funcdecls(AST a) {
 static int cgen_funcdecl(AST a) {
     AST a1, a2, a3, a4;
     int c=0;
-    int lbl1, lbl2;
+    int lbl1;
 
     get_sons(a, &a1, &a2, &a3, &a4);
 
     lbl1 = new_label();
     // set begin label to val field of ast
     setval_SYM(get_ival(a1), lbl1);
-    lbl2 = new_label();
     gen_label(lbl1);
 
     incr_depth();
@@ -135,9 +135,9 @@ static int cgen_blocks(AST a) {
     AST a1, a2;
     int c=0;
     while (!isleaf(a)) {
-         get_sons(a, &a1, &a2, 0, 0);
-         c = cgen_block(a1);
-         a = a2;
+	get_sons(a, &a1, &a2, 0, 0);
+	c = cgen_block(a1);
+	a = a2;
     }
     return c;
 }
@@ -171,13 +171,13 @@ static int sizeof_locals(AST a) {
     int sz = 0;
     AST a1,a2;
     while (!isleaf(a)) {
-         get_sons(a, &a1, &a2, 0, 0);
-         switch (nodetype(a1)) {
-            case nVARDECL : sz += sizeof_local(a1); break;
-            case nVARDECLS: sz += sizeof_locals(a1); break;
-            default: sz += 1; break;
-         }
-         a = a2;
+	get_sons(a, &a1, &a2, 0, 0);
+	switch (nodetype(a1)) {
+	    case nVARDECL : sz += sizeof_local(a1); break;
+	    case nVARDECLS: sz += sizeof_locals(a1); break;
+	    default: sz += 1; break;
+	}
+	a = a2;
     }
     return sz;
 }
@@ -186,9 +186,9 @@ static int cgen_stmts(AST a) {
     AST a1, a2;
     int c=0;
     while (!isleaf(a)) {
-         get_sons(a, &a1, &a2, 0, 0);
-         c = cgen_stmt(a1);
-         a = a2;
+	get_sons(a, &a1, &a2, 0, 0);
+	c = cgen_stmt(a1);
+	a = a2;
     }
     return c;
 }
@@ -197,11 +197,11 @@ static int show_cblock_stmt(int cb,int ce) {
     int b=0;
 
     if (cb < ce) {
-        printf(" cblock=(%d,%d)\n",cb+1,ce);
-        b = new_cblock();
-        set_cblock(b,cb+1,ce);
+	printf(" cblock=(%d,%d)\n",cb+1,ce);
+	b = new_cblock();
+	set_cblock(b,cb+1,ce);
     } else {
-        printf(" cblock=null\n");
+	printf(" cblock=null\n");
     }
     return b;
 }
@@ -215,32 +215,40 @@ static int cgen_stmt(AST a) {
     get_sons(a, &a1, 0,0,0);
 
     switch (nodetype(a1)) {
-        case nASN:
+	case nASN:
 	    c = gen_code(OPR, 0, 201); // dummy
-            break;
+	    break;
 	case nCALL:
-	    c = gen_code(OPR, 0, 202); // dummy
-            break;
+	    c = cgen_funccall(a1); // dummy
+	    break;
 	case nIF:
 	    c = gen_code(OPR, 0, 203); // dummy
-            break;
+	    break;
 	case nRET:
 	    c = gen_code(OPR, 0, 204); // dummy
-            break;
-        case nBLOCK: 
-            c = cgen_block(a1);
-            break;
-        default:
-            break;
+	    break;
+	case nBLOCK: 
+	    c = cgen_block(a1);
+	    break;
+	default:
+	    break;
     }
 
     ce = get_cur_code();
 
     if (cb < ce) {
-     // printf("\n");
-     // print_AST(a);
-     // show_cblock_stmt(cb,ce);
+	// printf("\n");
+	// print_AST(a);
+	// show_cblock_stmt(cb,ce);
     }
 
     return c;
+}
+
+static int cgen_funccall(AST a){
+    AST a1, a2;
+    get_sons(a, &a1, &a2, 0, 0);
+    int idx = get_ival(a1);
+    int begin_label = getval_SYM(idx);
+    gen_code(CALL, 0, begin_label);
 }
