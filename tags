@@ -129,6 +129,7 @@ cblock	cgen/code.h	/^} cblock;$/;"	t	typeref:struct:cblock
 cc	cgen/code.h	/^  unsigned char cc;$/;"	m	struct:regs
 cgen	cgen/cgen1.c	/^int cgen(AST a) {$/;"	f
 cgen	cgen/cgen2.c	/^int cgen(AST a) {$/;"	f
+cgen_args	cgen/cgen2.c	/^static int cgen_args(AST a){$/;"	f	file:
 cgen_asn	cgen/cgen1.c	/^static int cgen_asn(AST a) {$/;"	f	file:
 cgen_block	cgen/cgen1.c	/^static int cgen_block(AST a) {$/;"	f	file:
 cgen_block	cgen/cgen2.c	/^static int cgen_block(AST a) {$/;"	f	file:
@@ -138,6 +139,7 @@ cgen_classdecl	cgen/cgen2.c	/^static int cgen_classdecl(AST a) {$/;"	f	file:
 cgen_classdecls	cgen/cgen2.c	/^static int cgen_classdecls(AST a) {$/;"	f	file:
 cgen_con	cgen/cgen1.c	/^static int cgen_con(AST a) {$/;"	f	file:
 cgen_expr	cgen/cgen1.c	/^static int cgen_expr(AST a) {$/;"	f	file:
+cgen_expr	cgen/cgen2.c	/^static int cgen_expr(AST a) {$/;"	f	file:
 cgen_funccall	cgen/cgen2.c	/^static int cgen_funccall(AST a){$/;"	f	file:
 cgen_funcdecl	cgen/cgen2.c	/^static int cgen_funcdecl(AST a) {$/;"	f	file:
 cgen_funcdecls	cgen/cgen2.c	/^static int cgen_funcdecls(AST a) {$/;"	f	file:
@@ -152,6 +154,7 @@ cgen_stmts	cgen/cgen2.c	/^static int cgen_stmts(AST a) {$/;"	f	file:
 cgen_vardecl	cgen/cgen2.c	/^static int cgen_vardecl(AST a) {$/;"	f	file:
 cgen_vardecls	cgen/cgen2.c	/^static int cgen_vardecls(AST a) {$/;"	f	file:
 cgen_vref	cgen/cgen1.c	/^static int cgen_vref(AST a, int lhs) {$/;"	f	file:
+cgen_vref	cgen/cgen2.c	/^static int cgen_vref(AST a, int lhs) {$/;"	f	file:
 classdecl	front/parser2.c	/^static AST classdecl() {$/;"	f	file:
 classdecls	front/parser2.c	/^static AST classdecls() {$/;"	f	file:
 classhead	front/parser2.c	/^static AST classhead() {$/;"	f	file:

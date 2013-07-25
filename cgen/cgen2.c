@@ -25,6 +25,9 @@ static int sizeof_local(AST);
 static int cgen_stmts(AST);
 static int cgen_stmt(AST);
 static int cgen_funccall(AST);
+static int cgen_args(AST);
+static int cgen_expr(AST);
+static int cgen_vref(AST, int);
 
 static int ast_root;
 
@@ -80,8 +83,10 @@ static int cgen_classdecl(AST a) {
     int c=0;
 
     get_sons(a, &a1, &a2, &a3, 0);
+    incr_depth();
     c = cgen_vardecls(a2);
     c = cgen_funcdecls(a3);
+    decr_depth();
     return c;
 }
 
@@ -247,8 +252,49 @@ static int cgen_stmt(AST a) {
 
 static int cgen_funccall(AST a){
     AST a1, a2;
+    int c;
     get_sons(a, &a1, &a2, 0, 0);
     int idx = get_ival(a1);
     int begin_label = getval_SYM(idx);
-    gen_code(CALL, 0, begin_label);
+    
+    //handle arguments:
+    c = cgen_args(a2);
+
+    c= gen_code(CALL, 0, begin_label);
+    return c;
+}
+
+static int cgen_args(AST a){
+    AST a1, a2;
+    int c = 0;
+    get_sons(a, &a1, &a2, 0, 0);
+    if (a1){
+	c = cgen_args(a2);
+	a1 = get_son0(a1);
+	c = cgen_expr(a1); 
+    }
+    return c;
+}
+
+static int cgen_expr(AST a) {
+    int c= 0;
+    int val = get_ival(a);
+
+    switch (nodetype(a)) {
+	case nVREF:
+	    c = cgen_vref(a,false);
+	    break;
+	default:
+	    break;
+    }
+    return c;
+}
+
+static int cgen_vref(AST a, int lhs) {
+    int c= 0;
+    int idx = get_ival(a);
+
+    c = gen_code((lhs)?STV:LDV, get_cur_depth() - getdepth_SYM(idx), getoffset_SYM(idx));  /* dummy */
+
+    return c;
 }

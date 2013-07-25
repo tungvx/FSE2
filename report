@@ -4,3 +4,5 @@
 4. Extend the interpretor so that when bexpr is: + - * / % cc content is changed
 5. Modify parser2.c so that after inserting function name into sym table, we store the idx of the inserted symbol into the ival field of AST name of function.
 6. When generate begin_label for function decl, we insert that label to val field in the sym table.
+7. Support function call
+8. Support args for function call.
