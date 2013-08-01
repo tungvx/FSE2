@@ -6,3 +6,4 @@
 6. When generate begin_label for function decl, we insert that label to val field in the sym table.
 7. Support function call
 8. Support args for function call.
+9. When condition expression of if stmt is not a logical expression (just is some arithmatic expression) we will decrease the TOS by 1 after calculation.

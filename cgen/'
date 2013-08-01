@@ -283,8 +283,8 @@ static int cgen_op2(AST a) {
     get_sons(a, &a1,&a2,0,0);
     op = get_ival(a);
 
-    c = cgen_expr(a1, false);
-    c = cgen_expr(a2, false);
+    c = cgen_expr(a1);
+    c = cgen_expr(a2);
 
     //calculate the type of operator.
     c = gen_code(OPR, 0, get_op_code_val(get_ival(a))); /* dummy */
