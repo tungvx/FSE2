@@ -246,7 +246,7 @@ static int cgen_expr(AST a, bool isConExpr) {
 //generate lval code.
 static int cgen_lval(AST a,int lhs){
     int c = 0;
-    AST aref, exprs, expr;
+    AST aref, exprs, expr, type;
 
     get_sons(a, &aref, &exprs, 0, 0);
     get_sons(exprs, &expr, &exprs, 0, 0);
@@ -254,6 +254,24 @@ static int cgen_lval(AST a,int lhs){
     c = cgen_expr(expr, false);
 
     int idx = get_ival(aref);
+    
+    //process type:
+    type = gettype_SYM(idx);
+    int size[10];
+    int i;
+    for (i = 0; i < 10; i++) size[i] = 1;
+    int length = 0;
+    while(nodetype(get_son0(type)) == tARRAY){
+	length++;
+	for (i = length-1; i > 0; i--) size[i] = size[i-1];
+	size[0] *= get_ival(type);
+	type = get_son0(type);
+    }
+    length++;
+    do {
+	get_sons(exprs, &expr, &exprs, 0, 0);
+	if (expr == 0) break;
+    } while (true);
 
     int lev = get_cur_depth() - getdepth_SYM(idx);
     int val = getoffset_SYM(idx);
