@@ -168,6 +168,13 @@ AST make_AST_while(AST s0, AST s1) {
     return a;
 }
 
+AST make_AST_break(){
+    AST a = new_AST();
+    set_node(a, nBREAK, 0, 0);
+    set_sons(a, 0, 0, 0, 0);
+    return a;
+}
+
 AST make_AST_vardecl(AST name, AST type) {
     AST a = new_AST();
     Node *np = &ast_buf[a];

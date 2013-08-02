@@ -9,5 +9,6 @@
 9. When condition expression of if stmt is not a logical expression (just is some arithmatic expression) we will decrease the TOS by 1 after calculation.
 10. support multi-dimenstional array
 11. support datatypes: int (lev = 1), char (lev = 2), float (lev = 3), string (lev = 4)
-12. support while stmt, change parser1.c in order to parse while stmt.
-13.
+12. support while stmt, change parser1.c, ast.c in order to parse while stmt.
+13. support break stmt, need to change parser1.c, ast.c.
+14.

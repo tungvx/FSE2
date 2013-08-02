@@ -119,6 +119,7 @@ begin	front/sym.h	/^    int begin;$/;"	m	struct:scope
 block	front/parser1.c	/^static AST block() {$/;"	f	file:
 block	front/parser2.c	/^static AST block() {$/;"	f	file:
 bool	front/ast.h	/^typedef enum { false=0, true=1 } bool;$/;"	t	typeref:enum:__anon1
+breakstmt	front/parser1.c	/^static AST breakstmt(){$/;"	f	file:
 buf	cgen/code.c	/^static char buf[256];$/;"	v	file:
 buf	front/token.h	/^    char buf[MAX_LINE];$/;"	m	struct:Line
 cGLOBAL	front/sym.h	/^    cLOCAL, cGLOBAL, 	  \/* constants *\/$/;"	e	enum:__anon3
@@ -131,7 +132,7 @@ cgen	cgen/cgen1.c	/^int cgen(AST a) {$/;"	f
 cgen	cgen/cgen2.c	/^int cgen(AST a) {$/;"	f
 cgen_args	cgen/cgen2.c	/^static int cgen_args(AST a){$/;"	f	file:
 cgen_asn	cgen/cgen1.c	/^static int cgen_asn(AST a) {$/;"	f	file:
-cgen_block	cgen/cgen1.c	/^static int cgen_block(AST a) {$/;"	f	file:
+cgen_block	cgen/cgen1.c	/^static int cgen_block(AST a, int label_break) {$/;"	f	file:
 cgen_block	cgen/cgen2.c	/^static int cgen_block(AST a) {$/;"	f	file:
 cgen_blocks	cgen/cgen1.c	/^static int cgen_blocks(AST a) {$/;"	f	file:
 cgen_blocks	cgen/cgen2.c	/^static int cgen_blocks(AST a) {$/;"	f	file:
@@ -143,13 +144,13 @@ cgen_expr	cgen/cgen2.c	/^static int cgen_expr(AST a) {$/;"	f	file:
 cgen_funccall	cgen/cgen2.c	/^static int cgen_funccall(AST a){$/;"	f	file:
 cgen_funcdecl	cgen/cgen2.c	/^static int cgen_funcdecl(AST a) {$/;"	f	file:
 cgen_funcdecls	cgen/cgen2.c	/^static int cgen_funcdecls(AST a) {$/;"	f	file:
-cgen_ifstmt	cgen/cgen1.c	/^static int cgen_ifstmt(AST a) {$/;"	f	file:
+cgen_ifstmt	cgen/cgen1.c	/^static int cgen_ifstmt(AST a, int label_break) {$/;"	f	file:
 cgen_imm	cgen/cgen1.c	/^static int cgen_imm(AST a) {$/;"	f	file:
 cgen_lval	cgen/cgen1.c	/^static int cgen_lval(AST a,int lhs){$/;"	f	file:
 cgen_op2	cgen/cgen1.c	/^static int cgen_op2(AST a) {$/;"	f	file:
-cgen_stmt	cgen/cgen1.c	/^static int cgen_stmt(AST a) {$/;"	f	file:
+cgen_stmt	cgen/cgen1.c	/^static int cgen_stmt(AST a, int label_break) {$/;"	f	file:
 cgen_stmt	cgen/cgen2.c	/^static int cgen_stmt(AST a) {$/;"	f	file:
-cgen_stmts	cgen/cgen1.c	/^static int cgen_stmts(AST a) {$/;"	f	file:
+cgen_stmts	cgen/cgen1.c	/^static int cgen_stmts(AST a, int label_break) {$/;"	f	file:
 cgen_stmts	cgen/cgen2.c	/^static int cgen_stmts(AST a) {$/;"	f	file:
 cgen_vardecl	cgen/cgen2.c	/^static int cgen_vardecl(AST a) {$/;"	f	file:
 cgen_vardecls	cgen/cgen2.c	/^static int cgen_vardecls(AST a) {$/;"	f	file:
@@ -301,6 +302,7 @@ main	front/scanner.c	/^int main() {$/;"	f
 make_AST	front/ast.c	/^AST make_AST(int type, AST s0, AST s1, AST s2, AST s3) {$/;"	f
 make_AST_argdecl	front/ast.c	/^AST make_AST_argdecl(AST name, AST type) {$/;"	f
 make_AST_asn	front/ast.c	/^AST make_AST_asn(int op, AST s0, AST s1) {$/;"	f
+make_AST_break	front/ast.c	/^AST make_AST_break(){$/;"	f
 make_AST_con	front/ast.c	/^AST make_AST_con(char *text, int val) {$/;"	f
 make_AST_funcdecl	front/ast.c	/^AST make_AST_funcdecl(AST name, AST type, AST args, AST block) {$/;"	f
 make_AST_if	front/ast.c	/^AST make_AST_if(AST s0, AST s1, AST s2) {$/;"	f
