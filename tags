@@ -138,7 +138,7 @@ cgen_blocks	cgen/cgen2.c	/^static int cgen_blocks(AST a) {$/;"	f	file:
 cgen_classdecl	cgen/cgen2.c	/^static int cgen_classdecl(AST a) {$/;"	f	file:
 cgen_classdecls	cgen/cgen2.c	/^static int cgen_classdecls(AST a) {$/;"	f	file:
 cgen_con	cgen/cgen1.c	/^static int cgen_con(AST a) {$/;"	f	file:
-cgen_expr	cgen/cgen1.c	/^static int cgen_expr(AST a) {$/;"	f	file:
+cgen_expr	cgen/cgen1.c	/^static int cgen_expr(AST a, bool isConExpr) {$/;"	f	file:
 cgen_expr	cgen/cgen2.c	/^static int cgen_expr(AST a) {$/;"	f	file:
 cgen_funccall	cgen/cgen2.c	/^static int cgen_funccall(AST a){$/;"	f	file:
 cgen_funcdecl	cgen/cgen2.c	/^static int cgen_funcdecl(AST a) {$/;"	f	file:

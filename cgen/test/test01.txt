@@ -1,6 +1,8 @@
 {
    int[10] x;
    int y;
+   int[2][3][4] z;
+   z[1][2][3] = 10;
    y = x[2];
    if (y + 1) y = x[3] + 4; 
    else if (y) { int z; y = x[z + 5]; z = y; }

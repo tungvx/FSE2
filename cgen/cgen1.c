@@ -249,9 +249,6 @@ static int cgen_lval(AST a,int lhs){
     AST aref, exprs, expr, type;
 
     get_sons(a, &aref, &exprs, 0, 0);
-    get_sons(exprs, &expr, &exprs, 0, 0);
-
-    c = cgen_expr(expr, false);
 
     int idx = get_ival(aref);
     
@@ -268,10 +265,15 @@ static int cgen_lval(AST a,int lhs){
 	type = get_son0(type);
     }
     length++;
-    do {
+    for (i = 0; i < length; i++){
 	get_sons(exprs, &expr, &exprs, 0, 0);
-	if (expr == 0) break;
-    } while (true);
+	if (expr) cgen_expr(expr, false);
+	if (size[i] > 1) {
+	    gen_code(LDI, 0, size[i]);
+	    gen_code(OPR, 0, 4);
+	}
+	if (i > 0) gen_code(OPR, 0, 2);
+    }
 
     int lev = get_cur_depth() - getdepth_SYM(idx);
     int val = getoffset_SYM(idx);
