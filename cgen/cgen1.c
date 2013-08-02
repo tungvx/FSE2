@@ -18,6 +18,7 @@ static int cgen_stmts(AST);
 static int cgen_stmt(AST);
 static int cgen_asn(AST);
 static int cgen_ifstmt(AST);
+static int cgen_whilestmt(AST);
 static int cgen_expr(AST, bool);
 static int cgen_lval(AST,int);
 static int cgen_index(AST,int);
@@ -162,6 +163,9 @@ static int cgen_stmt(AST a) {
 	case nIF:
 	    c = cgen_ifstmt(a1);
 	    break;
+	case nWHILE:
+	    c = cgen_whilestmt(a1);
+	    break;
 	case nBLOCK:
 	    c = cgen_block(a1);
 	    break;
@@ -213,6 +217,24 @@ static int cgen_ifstmt(AST a) {
     c = gen_code(JMP, l2, 0);    
     c = gen_label(l1);
     c = cgen_stmt(a3);
+    c = gen_label(l2);
+    return c;
+}
+
+static int cgen_whilestmt(AST a) {
+    int c= 0;
+    AST a1,a2;
+    //labels:
+    int l1 = new_label();//continue label
+    int l2 = new_label();//break label
+
+    get_sons(a, &a1,&a2,0,0);
+
+    c = gen_label(l1);
+    c = cgen_expr(a1, true);
+    c = gen_code(JMPF, l2, 0);
+    c = cgen_stmt(a2);
+    c = gen_code(JMP, l1, 0);    
     c = gen_label(l2);
     return c;
 }

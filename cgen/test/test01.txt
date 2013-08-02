@@ -2,6 +2,8 @@
    int[10] x;
    int y;
    int[2][3][4] z;
+   float t;
+   t = t + 3;
    z[1][2][3] = 10;
    y = x[2];
    if (y + 1) y = x[3] + 4; 

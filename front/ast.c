@@ -22,7 +22,7 @@ static char *namestr[] = {
   "@argdecls", "argdecl", 
   "@args", "arg", 
   "classhead", "block", 
-  "@stmts", "stmt", "asn", "if", "@exprs", "expr", "vref", 
+  "@stmts", "stmt", "asn", "if", "@exprs", "expr", "vref", "while", 
   "op1", "op2", "deref", "lval", 
   "call", "return", "break", "continue", 
   "@vars", "var", "con", "imm", "name",
@@ -158,6 +158,13 @@ AST make_AST_if(AST s0, AST s1, AST s2) {
     AST a = new_AST();
     set_node(a, nIF, 0, 0);
     set_sons(a, s0, s1, s2, 0);
+    return a;
+}
+
+AST make_AST_while(AST s0, AST s1) {
+    AST a = new_AST();
+    set_node(a, nWHILE, 0, 0);
+    set_sons(a, s0, s1, 0, 0);
     return a;
 }
 

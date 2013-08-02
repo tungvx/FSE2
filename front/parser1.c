@@ -82,6 +82,7 @@ static AST stmts(void);
 static AST stmt(void);
 static AST asnstmt(void);
 static AST ifstmt(void);
+static AST whilestmt(void);
 static AST exprs(void);
 static AST expr(void);
 static AST term(void);
@@ -350,7 +351,7 @@ static AST stmts() {
 
     a = new_list(nSTMTS);
     while (true) {
-        if (t->sym != ID && t->sym != tIF && t->sym != '{') 
+        if (t->sym != ID && t->sym != tIF && t->sym != '{' && t->sym != tWHILE) 
                 break;
 
         a1 = stmt();
@@ -373,6 +374,9 @@ static AST stmt() {
       case tIF:
         a1 = ifstmt();
         break;
+      case tWHILE:
+	a1 = whilestmt();
+	break;
       case '{': 
         a1 = block();
         break;
@@ -437,6 +441,32 @@ static AST ifstmt() {
     } else {
         parse_error("expected if");
         skiptoken(';');
+    }
+    return a;
+}
+
+static AST whilestmt() {
+    Token *t = &tok;
+    AST a=0;
+    AST a1=0,a2=0;
+
+    if (t->sym == tWHILE) {
+	gettoken();
+	if (t->sym == '(') {
+	    gettoken();
+	    a1 = expr(); 
+
+	    if (t->sym == ')') gettoken();
+	    else parse_error("expected )");
+
+	    a2 = stmt();
+	} else {
+	    parse_error("expected (");
+	}
+	a = make_AST_while(a1,a2);
+    } else {
+	parse_error("expected while");
+	skiptoken(';');
     }
     return a;
 }
