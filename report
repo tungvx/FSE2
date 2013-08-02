@@ -7,3 +7,5 @@
 7. Support function call
 8. Support args for function call.
 9. When condition expression of if stmt is not a logical expression (just is some arithmatic expression) we will decrease the TOS by 1 after calculation.
+10. support multi-dimenstional array
+11. support datatypes: int (lev = 1), char (lev = 2), float (lev = 3), string (lev = 4)

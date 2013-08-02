@@ -27,6 +27,7 @@ static int cgen_imm(AST);
 static int cgen_op2(AST);
 
 static int get_op_code_val(int);
+static int get_op_type(int);
 
 static int sizeof_locals(AST);
 static int sizeof_local(AST);
@@ -306,8 +307,8 @@ static int cgen_op2(AST a) {
     c = cgen_expr(a1, false);
     c = cgen_expr(a2, false);
 
-    //calculate the type of operator.
-    c = gen_code(OPR, 0, get_op_code_val(get_ival(a))); /* dummy */
+    //calculate the kind, type of operator.
+    c = gen_code(OPR, get_op_type(a), get_op_code_val(get_ival(a))); /* dummy */
     return c;
 }
 
@@ -365,4 +366,8 @@ static int get_op_code_val(int tokenval){
 	    break;
     }
     return optype;
+}
+
+int get_op_type(AST a){
+    return typeof_AST(a);
 }
