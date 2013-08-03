@@ -4,6 +4,7 @@
 #include <strings.h>
 #include "type.h" /* for primtype */
 #include "ast.h"
+#include "token.h"
 
 static Node *ast_buf;
 static int   ast_cnt;
@@ -40,6 +41,7 @@ static char *nameof(int n) {
       return namestr[n-nPROG];
    else if (n >= tINT && n <= tFUNC)
       return tnamestr[n-tINT];
+   else if (n == tCLASS) return "classname";
    else
       return "";
 }
@@ -228,7 +230,7 @@ AST exists(char *text) {
     Node *np = &ast_buf[1];
 
     for (i=1;i<=ast_cnt;i++,np++) {
-        if ((np->type == nNAME || np->type == tPRIM)
+        if ((np->type == nNAME || np->type == tPRIM || np->type == tCLASS)
 		&& strcmp(text, np->text)==0) return i;
     }
     return 0;
@@ -535,4 +537,9 @@ top:
         np->text = strdup(text);
     }
     return ast_cnt;
+}
+
+AST get_father(AST a){
+    Node *np = &ast_buf[a];
+    return (a) ? np->father : 0;
 }

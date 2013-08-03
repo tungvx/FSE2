@@ -13,3 +13,4 @@
 13. support break stmt, need to change parser1.c, ast.c.
 14. support continue stmt, changed parser1.c, ast.c
 15. support return stmt
+16. function call in other class

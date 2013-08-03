@@ -135,7 +135,7 @@ cgen_asn	cgen/cgen1.c	/^static int cgen_asn(AST a) {$/;"	f	file:
 cgen_block	cgen/cgen1.c	/^static int cgen_block(AST a, int label_break, int label_continue) {$/;"	f	file:
 cgen_block	cgen/cgen2.c	/^static int cgen_block(AST a, int return_label) {$/;"	f	file:
 cgen_blocks	cgen/cgen1.c	/^static int cgen_blocks(AST a) {$/;"	f	file:
-cgen_blocks	cgen/cgen2.c	/^static int cgen_blocks(AST a) {$/;"	f	file:
+cgen_blocks	cgen/cgen2.c	/^static int cgen_blocks(AST a, int return_label) {$/;"	f	file:
 cgen_classdecl	cgen/cgen2.c	/^static int cgen_classdecl(AST a) {$/;"	f	file:
 cgen_classdecls	cgen/cgen2.c	/^static int cgen_classdecls(AST a) {$/;"	f	file:
 cgen_con	cgen/cgen1.c	/^static int cgen_con(AST a) {$/;"	f	file:
@@ -265,6 +265,7 @@ insn	cgen/code.h	/^typedef struct insn {$/;"	s
 insn	cgen/code.h	/^} insn;$/;"	t	typeref:struct:insn
 insn_code	cgen/code.h	23;"	d
 interp	cgen/code.c	/^void interp() {$/;"	f
+isclasstype	front/parser2.c	/^static bool isclasstype(){$/;"	f	file:
 isleaf	front/ast.c	/^bool isleaf(AST a) {$/;"	f
 islist	front/ast.c	/^bool islist(AST a) {$/;"	f
 isprimtype	front/parser1.c	/^inline static bool isprimtype(int k) {$/;"	f	file:

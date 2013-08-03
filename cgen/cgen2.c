@@ -268,7 +268,7 @@ static int cgen_funccall(AST a){
 }
 
 static int cgen_args(AST a){
-    AST a1, a2;
+    AST a1 = 0, a2 = 0;
     int c = 0;
     get_sons(a, &a1, &a2, 0, 0);
     if (a1){

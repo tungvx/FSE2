@@ -4,6 +4,7 @@
 #include <strings.h>
 #include "loc.h"
 #include "sym.h"
+#include "ast.h"
 
 static symentry *symtab;
 static int symcnt;
@@ -103,9 +104,9 @@ void leave_block() {
     }
 
     /* back to the root => next func */
-    if (cur == cur_root) {
-        cur->begin = cur->end = n;
-    }
+    /*if (cur == cur_root) {*/
+    /*cur->begin = cur->end = n;*/
+    /*}*/
 
 }
 
