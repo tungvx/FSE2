@@ -133,7 +133,7 @@ cgen	cgen/cgen2.c	/^int cgen(AST a) {$/;"	f
 cgen_args	cgen/cgen2.c	/^static int cgen_args(AST a){$/;"	f	file:
 cgen_asn	cgen/cgen1.c	/^static int cgen_asn(AST a) {$/;"	f	file:
 cgen_block	cgen/cgen1.c	/^static int cgen_block(AST a, int label_break, int label_continue) {$/;"	f	file:
-cgen_block	cgen/cgen2.c	/^static int cgen_block(AST a) {$/;"	f	file:
+cgen_block	cgen/cgen2.c	/^static int cgen_block(AST a, int return_label) {$/;"	f	file:
 cgen_blocks	cgen/cgen1.c	/^static int cgen_blocks(AST a) {$/;"	f	file:
 cgen_blocks	cgen/cgen2.c	/^static int cgen_blocks(AST a) {$/;"	f	file:
 cgen_classdecl	cgen/cgen2.c	/^static int cgen_classdecl(AST a) {$/;"	f	file:
@@ -149,9 +149,9 @@ cgen_imm	cgen/cgen1.c	/^static int cgen_imm(AST a) {$/;"	f	file:
 cgen_lval	cgen/cgen1.c	/^static int cgen_lval(AST a,int lhs){$/;"	f	file:
 cgen_op2	cgen/cgen1.c	/^static int cgen_op2(AST a) {$/;"	f	file:
 cgen_stmt	cgen/cgen1.c	/^static int cgen_stmt(AST a, int label_break, int label_continue) {$/;"	f	file:
-cgen_stmt	cgen/cgen2.c	/^static int cgen_stmt(AST a) {$/;"	f	file:
+cgen_stmt	cgen/cgen2.c	/^static int cgen_stmt(AST a, int return_label) {$/;"	f	file:
 cgen_stmts	cgen/cgen1.c	/^static int cgen_stmts(AST a, int label_break, int label_continue) {$/;"	f	file:
-cgen_stmts	cgen/cgen2.c	/^static int cgen_stmts(AST a) {$/;"	f	file:
+cgen_stmts	cgen/cgen2.c	/^static int cgen_stmts(AST a, int return_label) {$/;"	f	file:
 cgen_vardecl	cgen/cgen2.c	/^static int cgen_vardecl(AST a) {$/;"	f	file:
 cgen_vardecls	cgen/cgen2.c	/^static int cgen_vardecls(AST a) {$/;"	f	file:
 cgen_vref	cgen/cgen1.c	/^static int cgen_vref(AST a, int lhs) {$/;"	f	file:

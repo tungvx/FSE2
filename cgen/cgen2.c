@@ -18,12 +18,12 @@ static int cgen_vardecls(AST);
 static int cgen_vardecl(AST);
 static int cgen_funcdecls(AST);
 static int cgen_funcdecl(AST);
-static int cgen_blocks(AST);
-static int cgen_block(AST);
+static int cgen_blocks(AST, int);
+static int cgen_block(AST, int);
 static int sizeof_locals(AST);
 static int sizeof_local(AST);
-static int cgen_stmts(AST);
-static int cgen_stmt(AST);
+static int cgen_stmts(AST, int);
+static int cgen_stmt(AST, int);
 static int cgen_funccall(AST);
 static int cgen_args(AST);
 static int cgen_expr(AST);
@@ -119,35 +119,37 @@ static int cgen_funcdecls(AST a) {
 static int cgen_funcdecl(AST a) {
     AST a1, a2, a3, a4;
     int c=0;
-    int lbl1;
+    int lbl1, lbl2;
 
     get_sons(a, &a1, &a2, &a3, &a4);
 
     lbl1 = new_label();
+    lbl2 = new_label();
     // set begin label to val field of ast
     setval_SYM(get_ival(a1), lbl1);
     gen_label(lbl1);
 
     incr_depth();
-    c = cgen_block(a4);
+    c = cgen_block(a4, lbl2);
     decr_depth();
 
+    gen_code(OPR, lbl2, 0);
     gen_code(RET, 0, 0);
     return c;
 }
 
-static int cgen_blocks(AST a) {
+static int cgen_blocks(AST a, int return_label) {
     AST a1, a2;
     int c=0;
     while (!isleaf(a)) {
 	get_sons(a, &a1, &a2, 0, 0);
-	c = cgen_block(a1);
+	c = cgen_block(a1, return_label);
 	a = a2;
     }
     return c;
 }
 
-static int cgen_block(AST a) {
+static int cgen_block(AST a, int return_label) {
     AST decls, stmts;
     int c = 0;
     int sz;
@@ -157,7 +159,7 @@ static int cgen_block(AST a) {
 
     c = gen_code(ENTER, 0, 0);
     c = gen_code(INCT, 0, sz);
-    c = cgen_stmts(stmts);
+    c = cgen_stmts(stmts, return_label);
     // c = gen_code(DECT, 0, sz);
     c = gen_code(LEAVE, 0, 0);
 
@@ -187,12 +189,12 @@ static int sizeof_locals(AST a) {
     return sz;
 }
 
-static int cgen_stmts(AST a) {
+static int cgen_stmts(AST a, int return_label) {
     AST a1, a2;
     int c=0;
     while (!isleaf(a)) {
 	get_sons(a, &a1, &a2, 0, 0);
-	c = cgen_stmt(a1);
+	c = cgen_stmt(a1, return_label);
 	a = a2;
     }
     return c;
@@ -211,7 +213,7 @@ static int show_cblock_stmt(int cb,int ce) {
     return b;
 }
 
-static int cgen_stmt(AST a) {
+static int cgen_stmt(AST a, int return_label) {
     AST a1=0;
     int c=0;
     int cb, ce;
@@ -230,10 +232,11 @@ static int cgen_stmt(AST a) {
 	    c = gen_code(OPR, 0, 203); // dummy
 	    break;
 	case nRET:
-	    c = gen_code(OPR, 0, 204); // dummy
+	    if (return_label > 0) c = gen_code(JMP, return_label, 0);
+	    else parse_error("Illigal return stmt");
 	    break;
 	case nBLOCK: 
-	    c = cgen_block(a1);
+	    c = cgen_block(a1, return_label);
 	    break;
 	default:
 	    break;
