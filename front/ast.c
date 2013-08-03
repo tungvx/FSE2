@@ -175,6 +175,13 @@ AST make_AST_break(){
     return a;
 }
 
+AST make_AST_continue(){
+    AST a = new_AST();
+    set_node(a, nCONTINUE, 0, 0);
+    set_sons(a, 0, 0, 0, 0);
+    return a;
+}
+
 AST make_AST_vardecl(AST name, AST type) {
     AST a = new_AST();
     Node *np = &ast_buf[a];

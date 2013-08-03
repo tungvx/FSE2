@@ -84,6 +84,7 @@ static AST asnstmt(void);
 static AST ifstmt(void);
 static AST whilestmt(void);
 static AST breakstmt(void);
+static AST continuestmt(void);
 static AST exprs(void);
 static AST expr(void);
 static AST term(void);
@@ -352,7 +353,7 @@ static AST stmts() {
 
     a = new_list(nSTMTS);
     while (true) {
-        if (t->sym != ID && t->sym != tIF && t->sym != '{' && t->sym != tWHILE && t->sym != tBREAK) 
+        if (t->sym != ID && t->sym != tIF && t->sym != '{' && t->sym != tWHILE && t->sym != tBREAK && t->sym != tCONTINUE) 
                 break;
 
         a1 = stmt();
@@ -380,6 +381,11 @@ static AST stmt() {
 	break;
       case tBREAK:
 	a1 = breakstmt();
+	if (t->sym == ';') gettoken();
+	else parse_error("expected ;");
+	break;
+      case tCONTINUE:
+	a1 = continuestmt();
 	if (t->sym == ';') gettoken();
 	else parse_error("expected ;");
 	break;
@@ -485,6 +491,19 @@ static AST breakstmt(){
 	a = make_AST_break();
     } else {
 	parse_error("Expected break stmt");
+	skiptoken(';');
+    }
+    return a;
+}
+
+static AST continuestmt(){
+    Token *t = &tok;
+    AST a = 0;
+    if (t->sym == tCONTINUE){
+	gettoken();
+	a = make_AST_continue();
+    } else {
+	parse_error("Expected continue stmt");
 	skiptoken(';');
     }
     return a;

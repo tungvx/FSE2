@@ -11,4 +11,4 @@
 11. support datatypes: int (lev = 1), char (lev = 2), float (lev = 3), string (lev = 4)
 12. support while stmt, change parser1.c, ast.c in order to parse while stmt.
 13. support break stmt, need to change parser1.c, ast.c.
-14.
+14. support continue stmt, changed parser1.c, ast.c

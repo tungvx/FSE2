@@ -3,6 +3,7 @@
     x = -1;
     while (x + 0) {
 	x = x - 2;
-	continue;
+	if (x) continue;
+	else break;
     }
 }

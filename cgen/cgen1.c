@@ -13,11 +13,11 @@ static AST ast_root;
 static int code_root;
 
 static int cgen_blocks(AST);
-static int cgen_block(AST, int);
-static int cgen_stmts(AST, int);
-static int cgen_stmt(AST, int);
+static int cgen_block(AST, int, int);
+static int cgen_stmts(AST, int, int);
+static int cgen_stmt(AST, int, int);
 static int cgen_asn(AST);
-static int cgen_ifstmt(AST, int);
+static int cgen_ifstmt(AST, int, int);
 static int cgen_whilestmt(AST);
 static int cgen_expr(AST, bool);
 static int cgen_lval(AST,int);
@@ -64,7 +64,7 @@ int main() {
 
 int cgen(AST a) {
     int c=0;
-    c = cgen_block(a, 0);
+    c = cgen_block(a, 0, 0);
     c = gen_code(RET,0,0);
     return c;
 }
@@ -74,13 +74,13 @@ static int cgen_blocks(AST a) {
     int c=0;
     while (!isleaf(a)) {
 	get_sons(a, &a1, &a2, 0, 0);
-	c = cgen_block(a1, 0);
+	c = cgen_block(a1, 0, 0);
 	a = a2;
     }
     return c;
 }
 
-static int cgen_block(AST a, int label_break) {
+static int cgen_block(AST a, int label_break, int label_continue) {
     AST decls, stmts;
     int c = 0;
     int sz;
@@ -92,7 +92,7 @@ static int cgen_block(AST a, int label_break) {
     c = gen_code(ENTER, 0, 0);
     c = gen_code(INCT, 0, sz);
 
-    c = cgen_stmts(stmts, label_break);
+    c = cgen_stmts(stmts, label_break, label_continue);
 
     // c = gen_code(DECT, 0, sz);
     c = gen_code(LEAVE, 0, 0);
@@ -124,12 +124,12 @@ static int sizeof_locals(AST a) {
     return sz;
 }
 
-static int cgen_stmts(AST a, int label_break) {
+static int cgen_stmts(AST a, int label_break, int label_continue) {
     AST a1, a2;
     int c=0;
     while (!isleaf(a)) {
 	get_sons(a, &a1, &a2, 0, 0);
-	c = cgen_stmt(a1, label_break);
+	c = cgen_stmt(a1, label_break, label_continue);
 	a = a2;
     }
     return c;
@@ -148,7 +148,7 @@ static int show_cblock_stmt(int cb,int ce) {
     return b;
 }
 
-static int cgen_stmt(AST a, int label_break) {
+static int cgen_stmt(AST a, int label_break, int label_continue) {
     AST a1=0;
     int c=0;
     int cb, ce;
@@ -161,18 +161,23 @@ static int cgen_stmt(AST a, int label_break) {
 	    c = cgen_asn(a1);
 	    break;
 	case nIF:
-	    c = cgen_ifstmt(a1, label_break);
+	    c = cgen_ifstmt(a1, label_break, label_continue);
 	    break;
 	case nWHILE:
 	    c = cgen_whilestmt(a1);
 	    break;
 	case nBLOCK:
-	    c = cgen_block(a1, label_break);
+	    c = cgen_block(a1, label_break, label_continue);
 	    break;
 	case nBREAK:
 	    if (label_break > 0){
 	    	gen_code(JMP, label_break, 0);
 	    } else parse_error("Break must be in while stmt");
+	    break;
+	case nCONTINUE:
+	    if (label_continue > 0){
+	    	gen_code(JMP, label_continue, 0);
+	    } else parse_error("continue must be in while stmt");
 	    break;
 	default:
 	    break;
@@ -207,7 +212,7 @@ static int cgen_asn(AST a) {
     return c;
 }
 
-static int cgen_ifstmt(AST a, int label_break) {
+static int cgen_ifstmt(AST a, int label_break, int label_continue) {
     int c= 0;
     AST a1,a2,a3;
     //labels:
@@ -218,10 +223,10 @@ static int cgen_ifstmt(AST a, int label_break) {
 
     c = cgen_expr(a1, true);
     c = gen_code(JMPF, l1, 0);
-    c = cgen_stmt(a2, label_break);
+    c = cgen_stmt(a2, label_break, label_continue);
     c = gen_code(JMP, l2, 0);    
     c = gen_label(l1);
-    c = cgen_stmt(a3, label_break);
+    c = cgen_stmt(a3, label_break, label_continue);
     c = gen_label(l2);
     return c;
 }
@@ -238,7 +243,7 @@ static int cgen_whilestmt(AST a) {
     c = gen_label(l1);
     c = cgen_expr(a1, true);
     c = gen_code(JMPF, l2, 0);
-    c = cgen_stmt(a2, l2);
+    c = cgen_stmt(a2, l2, l1);
     c = gen_code(JMP, l1, 0);    
     c = gen_label(l2);
     return c;
