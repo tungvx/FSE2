@@ -186,12 +186,15 @@ void interp() {
            break;
          case LDA: push(display(x.lev)+x.val);
            break;
-         case LDV: push(mem[display(x.lev)+x.val]);
+         case LDV: 
+	   push(mem[display(x.lev)+x.val]);
+	   if (mem[display(x.lev)+x.val]) reg.cc = 1; 
            break;
          case STV: mem[display(x.lev)+x.val] = pop();
            break;
          case LDI:
            push(x.val);
+	   if (x.val) reg.cc = 1;
            break;
          case LDX: { int t1;
            t1 = pop();
@@ -258,56 +261,56 @@ void operator(insn x) {
       case 2: /* ADD */
         t2 = pop(); t1 = pop();
         push(t1+t2);
-	reg.cc = ((t1+t2) > 0);
+	if (t1 + t2) reg.cc = 1;
         break;
       case 3: /* SUB */
         t2 = pop(); t1 = pop();
         push(t1-t2);
-	reg.cc = ((t1-t2) > 0);
+	if (t1 - t2) reg.cc = 1;
         break;
       case 4: /* MUL */
         t2 = pop(); t1 = pop();
         push(t1*t2);
-	reg.cc = ((t1*t2) > 0);
+	if (t1 * t2) reg.cc = 1;
         break;
       case 5: /* DIV */
         t2 = pop(); t1 = pop();
         push(t1/t2);
-	reg.cc = ((t1/t2) > 0);
+	if (t1/t2) reg.cc = 1;
         break;
       case 6: /* MOD */
         t2 = pop(); t1 = pop();
         push(t1%t2);
-	reg.cc = ((t1%t2) > 0);
+	if (t1%t2) reg.cc = 1;
         break;
       case 7: /* NEG */
         t1 = pop();
         push(-t1);
-	reg.cc = (t1 > 0);
+	if (-t1) reg.cc = 1;
         break;
       case 8: 
         t2 = pop(); t1 = pop();
-        reg.cc = (t1==t2);
+	if (t1 == t2) reg.cc = 1;
         break;
       case 9: 
         t2 = pop(); t1 = pop();
-        reg.cc = (t1!=t2);
+        if (t1!=t2) reg.cc = 1;
         break;
       case 10: 
         t2 = pop(); t1 = pop();
-        reg.cc = (t1>=t2);
+        if (t1>=t2) reg.cc = 1;
         break;
       case 11: 
         t2 = pop(); t1 = pop();
-        reg.cc = (t1<=t2);
+        if (t1<=t2) reg.cc = 1;
         break;
       case 12: 
         t2 = pop(); t1 = pop();
-        reg.cc = (t1>t2);
+        if (t1>t2) reg.cc = 1;
         break;
       case 13: 
         t2 = pop(); t1 = pop();
-        reg.cc = (t1<t2);
+        if (t1<t2) reg.cc = 1;
         break;
       default:
 	printf("unsupported operator:%d\n", x.val);

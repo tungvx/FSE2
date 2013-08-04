@@ -1,24 +1,6 @@
-class c {
-    int foo(){
-    }
-    int f(){
-    }
-}
-class a{
-    int foo(){
-    }
-    int f(){
-    }
-}
-class d{
-    int foo(){
-    }
-}
-class b{
-    int baa(){
-    	a aObject;
-	c cObject;
-	aObject.f();
-	cObject.f();
-    }
+{
+    int x;
+    x = 4;
+    if (x) x = x - 2;
+    else x = x + 3;
 }

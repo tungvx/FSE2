@@ -1,9 +1,13 @@
 class c {
     int foo(){
     }
+    int f(){
+    }
 }
 class a{
     int foo(){
+    }
+    int f(){
     }
 }
 class b{
@@ -12,5 +16,7 @@ class b{
 	c cObject;
 	aObject.foo();
 	cObject.foo();
+	aObject.f();
+	cObject.f();
     }
 }
