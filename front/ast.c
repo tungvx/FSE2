@@ -219,6 +219,12 @@ AST make_AST_var(char *text,int val) {
     return a;
 }
 
+AST make_AST_funcname(char *text,int val) {
+    AST a = new_AST();
+    set_node(a, nNAME, text, val);
+    return a;
+}
+
 AST make_AST_vref(char *text,int val) {
     AST a = new_AST();
     set_node(a, nVREF, text, val);

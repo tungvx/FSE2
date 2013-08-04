@@ -211,6 +211,8 @@ false	front/ast.h	/^typedef enum { false=0, true=1 } bool;$/;"	e	enum:__anon1
 father	front/ast.h	/^  AST       father;$/;"	m	struct:Node
 fix_labels	cgen/code.c	/^int fix_labels() {$/;"	f
 flit	front/scanner.c	/^Token *flit(int ch) {$/;"	f
+func_name	front/parser2.c	/^static AST func_name(){$/;"	f	file:
+func_name	front/parser2.c	/^static AST func_name(AST class){$/;"	f	file:
 func_seq	front/sym.c	/^static int func_seq;$/;"	v	file:
 func_type	front/type.c	/^AST func_type(char *name, AST e) {$/;"	f
 funcdecl	front/parser2.c	/^static AST funcdecl() {$/;"	f	file:
@@ -222,6 +224,7 @@ get_STR_offset	front/token.c	/^inline int get_STR_offset(char *p) { return p - s
 get_arg_offset	front/loc.c	/^inline int  get_arg_offset()        { return arg_offset; }$/;"	f
 get_cur_code	cgen/code.c	/^int get_cur_code() { return code_cnt; }$/;"	f
 get_cur_depth	front/sym.c	/^inline int get_cur_depth () { return cur_depth; }$/;"	f
+get_father	front/ast.c	/^AST get_father(AST a){$/;"	f
 get_ival	front/ast.c	/^int get_ival(AST a) {$/;"	f
 get_loc_entry	front/loc.c	/^void get_loc_entry(int e, int *dep, int *off, int *size) {$/;"	f
 get_node	front/ast.c	/^void get_node(AST a, int *type, char *text, int *ival) {$/;"	f
@@ -308,6 +311,7 @@ make_AST_break	front/ast.c	/^AST make_AST_break(){$/;"	f
 make_AST_con	front/ast.c	/^AST make_AST_con(char *text, int val) {$/;"	f
 make_AST_continue	front/ast.c	/^AST make_AST_continue(){$/;"	f
 make_AST_funcdecl	front/ast.c	/^AST make_AST_funcdecl(AST name, AST type, AST args, AST block) {$/;"	f
+make_AST_funcname	front/ast.c	/^AST make_AST_funcname(char *text,int val) {$/;"	f
 make_AST_if	front/ast.c	/^AST make_AST_if(AST s0, AST s1, AST s2) {$/;"	f
 make_AST_imm	front/ast.c	/^AST make_AST_imm(int val) {$/;"	f
 make_AST_name	front/ast.c	/^AST make_AST_name(char *text) {$/;"	f

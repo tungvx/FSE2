@@ -86,7 +86,8 @@ static AST argrefs(void);
 static AST argref(void);
 static AST var(void);
 static AST name(void);
-static AST func_name(int);
+static AST func_name();
+static AST func_name_ref(int);
 static AST vref(void);
 static AST lval(void);
 static AST exprs(void);
@@ -294,7 +295,7 @@ static AST funcdecl() {
     AST ftype;
 
     a2 = typedecl();
-    a1 = name();
+    a1 = func_name();
     ftype = func_type(gen(fLOCAL),a2);
     int idx = insert_SYM(get_text(a1), ftype, fLOCAL, 0/* dummy */);
     set_ival(a1, idx);
@@ -465,7 +466,7 @@ static AST stmt() {
 		gettoken();
 		int type = typeof_AST(n);
 		if (nodetype(type) == tCLASS){
-		    AST function_name = func_name(type);
+		    AST function_name = func_name_ref(type);
 		    a1 = callstmt(function_name);
 		    AST args = 0;
 		    get_sons(a1, 0, 0, &args, 0);
@@ -670,7 +671,21 @@ static AST name() {
     return a;
 }
 
-static AST func_name(AST class){
+static AST func_name(){
+    Token *t = &tok;
+    AST a=0;
+
+    if (t->sym == ID) {
+	char *s = strdup(t->text);
+	gettoken();
+	a = make_AST_funcname(s, 0);
+    } else {
+	parse_error("expected ID");
+    }
+    return a;
+}
+
+static AST func_name_ref(AST class){
     Token *t = &tok;
     AST a = 0;
     if (t->sym == ID){
